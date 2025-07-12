@@ -60,11 +60,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         dspAdministrador.setLayout(dspAdministradorLayout);
         dspAdministradorLayout.setHorizontalGroup(
             dspAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         dspAdministradorLayout.setVerticalGroup(
             dspAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+            .addGap(0, 527, Short.MAX_VALUE)
         );
 
         mnuCerrar.setText("Cerrar");
