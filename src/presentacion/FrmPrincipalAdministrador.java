@@ -26,21 +26,150 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dspAdministrador = new javax.swing.JDesktopPane();
+        mnbAdministrador = new javax.swing.JMenuBar();
+        mnuCerrar = new javax.swing.JMenu();
+        mnuAgregar = new javax.swing.JMenu();
+        mniAgregarClientes = new javax.swing.JMenuItem();
+        mniAgregarAutomoviles = new javax.swing.JMenuItem();
+        mniAgregarGarajes = new javax.swing.JMenuItem();
+        mniAgregarEmpleados = new javax.swing.JMenuItem();
+        mniAgregarAgencias = new javax.swing.JMenuItem();
+        mnuModificar = new javax.swing.JMenu();
+        mniModificarCliente = new javax.swing.JMenuItem();
+        mniModificarAutomovil = new javax.swing.JMenuItem();
+        mniModificarGaraje = new javax.swing.JMenuItem();
+        mniModificarAgencia = new javax.swing.JMenuItem();
+        mnuListas = new javax.swing.JMenu();
+        mniListaCliente = new javax.swing.JMenuItem();
+        mniListaAutomóviles = new javax.swing.JMenuItem();
+        mniListaGarajes = new javax.swing.JMenuItem();
+        mniListaReserva = new javax.swing.JMenuItem();
+        mniListaEmpleado = new javax.swing.JMenuItem();
+        mniListaRegistro = new javax.swing.JMenuItem();
+        mnuEliminar = new javax.swing.JMenu();
+        mniEliminarCliente = new javax.swing.JMenuItem();
+        mniEliminarAutomovil = new javax.swing.JMenuItem();
+        mniEliminarGraaje = new javax.swing.JMenuItem();
+        mniEliminarEmpleado = new javax.swing.JMenuItem();
+        mniEliminarAgencia = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout dspAdministradorLayout = new javax.swing.GroupLayout(dspAdministrador);
+        dspAdministrador.setLayout(dspAdministradorLayout);
+        dspAdministradorLayout.setHorizontalGroup(
+            dspAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
+        dspAdministradorLayout.setVerticalGroup(
+            dspAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 377, Short.MAX_VALUE)
+        );
+
+        mnuCerrar.setText("Cerrar");
+        mnbAdministrador.add(mnuCerrar);
+
+        mnuAgregar.setText("Agregar");
+
+        mniAgregarClientes.setText("Clientes");
+        mnuAgregar.add(mniAgregarClientes);
+
+        mniAgregarAutomoviles.setText("Automóviles");
+        mnuAgregar.add(mniAgregarAutomoviles);
+
+        mniAgregarGarajes.setText("Garajes");
+        mnuAgregar.add(mniAgregarGarajes);
+
+        mniAgregarEmpleados.setText("Empleados");
+        mniAgregarEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarEmpleadosActionPerformed(evt);
+            }
+        });
+        mnuAgregar.add(mniAgregarEmpleados);
+
+        mniAgregarAgencias.setText("Agencias");
+        mnuAgregar.add(mniAgregarAgencias);
+
+        mnbAdministrador.add(mnuAgregar);
+
+        mnuModificar.setText("Modificar");
+
+        mniModificarCliente.setText("Cliente");
+        mnuModificar.add(mniModificarCliente);
+
+        mniModificarAutomovil.setText("Automóvil");
+        mnuModificar.add(mniModificarAutomovil);
+
+        mniModificarGaraje.setText("Garaje");
+        mnuModificar.add(mniModificarGaraje);
+
+        mniModificarAgencia.setText("Agencia");
+        mnuModificar.add(mniModificarAgencia);
+
+        mnbAdministrador.add(mnuModificar);
+
+        mnuListas.setText("Listas");
+
+        mniListaCliente.setText("Cliente");
+        mnuListas.add(mniListaCliente);
+
+        mniListaAutomóviles.setText("Automóviles");
+        mnuListas.add(mniListaAutomóviles);
+
+        mniListaGarajes.setText("Garajes");
+        mnuListas.add(mniListaGarajes);
+
+        mniListaReserva.setText("Reservas");
+        mnuListas.add(mniListaReserva);
+
+        mniListaEmpleado.setText("Empleados");
+        mnuListas.add(mniListaEmpleado);
+
+        mniListaRegistro.setText("Registros");
+        mnuListas.add(mniListaRegistro);
+
+        mnbAdministrador.add(mnuListas);
+
+        mnuEliminar.setText("Eliminar");
+
+        mniEliminarCliente.setText("Cliente");
+        mnuEliminar.add(mniEliminarCliente);
+
+        mniEliminarAutomovil.setText("Automóvil");
+        mnuEliminar.add(mniEliminarAutomovil);
+
+        mniEliminarGraaje.setText("Garaje");
+        mnuEliminar.add(mniEliminarGraaje);
+
+        mniEliminarEmpleado.setText("Empleado");
+        mnuEliminar.add(mniEliminarEmpleado);
+
+        mniEliminarAgencia.setText("Agencia");
+        mnuEliminar.add(mniEliminarAgencia);
+
+        mnbAdministrador.add(mnuEliminar);
+
+        setJMenuBar(mnbAdministrador);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(dspAdministrador)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(dspAdministrador)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mniAgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarEmpleadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniAgregarEmpleadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +207,32 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane dspAdministrador;
+    private javax.swing.JMenuBar mnbAdministrador;
+    private javax.swing.JMenuItem mniAgregarAgencias;
+    private javax.swing.JMenuItem mniAgregarAutomoviles;
+    private javax.swing.JMenuItem mniAgregarClientes;
+    private javax.swing.JMenuItem mniAgregarEmpleados;
+    private javax.swing.JMenuItem mniAgregarGarajes;
+    private javax.swing.JMenuItem mniEliminarAgencia;
+    private javax.swing.JMenuItem mniEliminarAutomovil;
+    private javax.swing.JMenuItem mniEliminarCliente;
+    private javax.swing.JMenuItem mniEliminarEmpleado;
+    private javax.swing.JMenuItem mniEliminarGraaje;
+    private javax.swing.JMenuItem mniListaAutomóviles;
+    private javax.swing.JMenuItem mniListaCliente;
+    private javax.swing.JMenuItem mniListaEmpleado;
+    private javax.swing.JMenuItem mniListaGarajes;
+    private javax.swing.JMenuItem mniListaRegistro;
+    private javax.swing.JMenuItem mniListaReserva;
+    private javax.swing.JMenuItem mniModificarAgencia;
+    private javax.swing.JMenuItem mniModificarAutomovil;
+    private javax.swing.JMenuItem mniModificarCliente;
+    private javax.swing.JMenuItem mniModificarGaraje;
+    private javax.swing.JMenu mnuAgregar;
+    private javax.swing.JMenu mnuCerrar;
+    private javax.swing.JMenu mnuEliminar;
+    private javax.swing.JMenu mnuListas;
+    private javax.swing.JMenu mnuModificar;
     // End of variables declaration//GEN-END:variables
 }
