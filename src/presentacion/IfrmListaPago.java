@@ -28,7 +28,7 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
 
         panListaCliente = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblLisataClientes = new javax.swing.JTable();
+        tblListaPagos = new javax.swing.JTable();
         lblFiltrar = new javax.swing.JLabel();
         cmbOpciones = new javax.swing.JComboBox<>();
         txtBuscar = new javax.swing.JTextField();
@@ -37,7 +37,7 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
 
         panListaCliente.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblLisataClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -48,7 +48,7 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
                 "ID", "Cliente", "Agencia", "Metodo de Pago", "Monto"
             }
         ));
-        jScrollPane1.setViewportView(tblLisataClientes);
+        jScrollPane1.setViewportView(tblListaPagos);
 
         lblFiltrar.setText("Filtrar por:");
 
@@ -104,7 +104,7 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFiltrar;
     private javax.swing.JPanel panListaCliente;
-    private javax.swing.JTable tblLisataClientes;
+    private javax.swing.JTable tblListaPagos;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
