@@ -26,7 +26,7 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panRegistroReserva = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblFechaInicio = new javax.swing.JLabel();
         lblCliente = new javax.swing.JLabel();
@@ -38,6 +38,8 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
         txtFechaInicio1 = new javax.swing.JTextField();
 
         setTitle("Registro de Reserva");
+
+        panRegistroReserva.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lblTitulo.setText("Registro de Reserva");
@@ -60,49 +62,49 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
 
         txtFechaInicio1.setText("DD/MM/AAAA");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panRegistroReservaLayout = new javax.swing.GroupLayout(panRegistroReserva);
+        panRegistroReserva.setLayout(panRegistroReservaLayout);
+        panRegistroReservaLayout.setHorizontalGroup(
+            panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panRegistroReservaLayout.createSequentialGroup()
+                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panRegistroReservaLayout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(lblTitulo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panRegistroReservaLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                             .addComponent(lblPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPrecio)
                             .addComponent(txtFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(cmbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtFechaInicio1))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panRegistroReservaLayout.setVerticalGroup(
+            panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panRegistroReservaLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblTitulo)
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCliente)
                     .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPrecio)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaInicio)
                     .addComponent(txtFechaInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaFin)
                     .addComponent(txtFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -112,11 +114,11 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panRegistroReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panRegistroReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -125,12 +127,12 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbCliente;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblFechaFin;
     private javax.swing.JLabel lblFechaInicio;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel panRegistroReserva;
     private javax.swing.JTextField txtFechaFin;
     private javax.swing.JTextField txtFechaInicio1;
     private javax.swing.JTextField txtPrecio;
