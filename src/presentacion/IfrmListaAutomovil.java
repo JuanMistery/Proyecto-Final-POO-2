@@ -8,12 +8,12 @@ package presentacion;
  *
  * @author LOQ
  */
-public class IfrmListaCliente extends javax.swing.JInternalFrame {
+public class IfrmListaAutomovil extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmListaCliente
      */
-    public IfrmListaCliente() {
+    public IfrmListaAutomovil() {
         initComponents();
     }
 
@@ -26,44 +26,44 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panListaCliente = new javax.swing.JPanel();
+        panListaAutomovil = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblListaClientes = new javax.swing.JTable();
+        tblListaAutomoviles = new javax.swing.JTable();
         lblFiltrar = new javax.swing.JLabel();
         cmbOpciones = new javax.swing.JComboBox<>();
         txtBuscar = new javax.swing.JTextField();
         lblBuscar = new javax.swing.JLabel();
 
-        setTitle("Lista De Clientes");
+        setTitle("Lista De Automóviles");
 
-        panListaCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panListaAutomovil.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblListaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaAutomoviles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "DNI", "Sponsor"
+                "ID", "Placa", "Modelo", "Marca", "Color", "Garaje"
             }
         ));
-        jScrollPane1.setViewportView(tblListaClientes);
+        jScrollPane1.setViewportView(tblListaAutomoviles);
 
         lblFiltrar.setText("Filtrar por:");
 
-        cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Nombre", "Apellido", "DNI" }));
+        cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Placa", "Modelo", "Marca", "Garaje" }));
 
         lblBuscar.setText("Buscar:");
 
-        javax.swing.GroupLayout panListaClienteLayout = new javax.swing.GroupLayout(panListaCliente);
-        panListaCliente.setLayout(panListaClienteLayout);
-        panListaClienteLayout.setHorizontalGroup(
-            panListaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panListaClienteLayout.createSequentialGroup()
-                .addGroup(panListaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panListaClienteLayout.createSequentialGroup()
+        javax.swing.GroupLayout panListaAutomovilLayout = new javax.swing.GroupLayout(panListaAutomovil);
+        panListaAutomovil.setLayout(panListaAutomovilLayout);
+        panListaAutomovilLayout.setHorizontalGroup(
+            panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panListaAutomovilLayout.createSequentialGroup()
+                .addGroup(panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panListaAutomovilLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(lblFiltrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -73,16 +73,16 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))
-                    .addGroup(panListaClienteLayout.createSequentialGroup()
+                    .addGroup(panListaAutomovilLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panListaClienteLayout.setVerticalGroup(
-            panListaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panListaClienteLayout.createSequentialGroup()
+        panListaAutomovilLayout.setVerticalGroup(
+            panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panListaAutomovilLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(panListaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFiltrar)
                     .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -96,11 +96,11 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panListaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panListaAutomovil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panListaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panListaAutomovil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,8 +112,8 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblFiltrar;
-    private javax.swing.JPanel panListaCliente;
-    private javax.swing.JTable tblListaClientes;
+    private javax.swing.JPanel panListaAutomovil;
+    private javax.swing.JTable tblListaAutomoviles;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

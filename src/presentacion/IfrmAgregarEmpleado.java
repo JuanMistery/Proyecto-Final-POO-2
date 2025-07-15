@@ -44,7 +44,7 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         cmbTiposDeEmpleado = new javax.swing.JComboBox<>();
         lblTipoEmpleado = new javax.swing.JLabel();
-        lblIdAgencia = new javax.swing.JLabel();
+        lblAgencia = new javax.swing.JLabel();
         txtIDAgencia = new javax.swing.JTextField();
 
         setTitle("Agregar Empleado");
@@ -79,7 +79,7 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
 
         lblTipoEmpleado.setText("TIPO: ");
 
-        lblIdAgencia.setText("ID AGENCIA:");
+        lblAgencia.setText("AGENCIA:");
 
         javax.swing.GroupLayout panAgregarEmpleadoLayout = new javax.swing.GroupLayout(panAgregarEmpleado);
         panAgregarEmpleado.setLayout(panAgregarEmpleadoLayout);
@@ -89,7 +89,7 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
                 .addGap(16, 16, 16)
                 .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panAgregarEmpleadoLayout.createSequentialGroup()
-                        .addComponent(lblIdAgencia)
+                        .addComponent(lblAgencia)
                         .addGap(18, 18, 18)
                         .addComponent(txtIDAgencia))
                     .addGroup(panAgregarEmpleadoLayout.createSequentialGroup()
@@ -171,7 +171,7 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
                     .addComponent(lblTipoEmpleado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIdAgencia)
+                    .addComponent(lblAgencia)
                     .addComponent(txtIDAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -198,10 +198,10 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JComboBox<String> cmbTiposDeEmpleado;
+    private javax.swing.JLabel lblAgencia;
     private javax.swing.JLabel lblApellidoEmpleado;
     private javax.swing.JLabel lblContraseniaEmpleado;
     private javax.swing.JLabel lblDireccionEmpleado;
-    private javax.swing.JLabel lblIdAgencia;
     private javax.swing.JLabel lblImagenEmpleado;
     private javax.swing.JLabel lblNombreEmpleado;
     private javax.swing.JLabel lblTelefonoEmpleado;
