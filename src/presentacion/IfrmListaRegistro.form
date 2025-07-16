@@ -50,7 +50,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="cmbOpciones" min="-2" pref="137" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblBuscar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtBuscar" min="-2" pref="207" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -72,7 +72,7 @@
                       <Component id="lblFiltrar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmbOpciones" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="174" max="-2" attributes="0"/>
@@ -89,7 +89,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tblListaClientes">
+            <Component class="javax.swing.JTable" name="tblLisataClientes">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="4">
@@ -126,7 +126,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtBuscar">
         </Component>
-        <Component class="javax.swing.JLabel" name="lblBuscar">
+        <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar:"/>
           </Properties>

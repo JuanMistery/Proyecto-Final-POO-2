@@ -8,12 +8,12 @@ package presentacion;
  *
  * @author LOQ
  */
-public class IfrmListaCliente extends javax.swing.JInternalFrame {
+public class IfrmListaRegistro extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmListaCliente
      */
-    public IfrmListaCliente() {
+    public IfrmListaRegistro() {
         initComponents();
     }
 
@@ -28,17 +28,17 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
 
         panListaCliente = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblListaClientes = new javax.swing.JTable();
+        tblLisataClientes = new javax.swing.JTable();
         lblFiltrar = new javax.swing.JLabel();
         cmbOpciones = new javax.swing.JComboBox<>();
         txtBuscar = new javax.swing.JTextField();
-        lblBuscar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setTitle("Lista De Clientes");
 
         panListaCliente.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblListaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblLisataClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -49,13 +49,13 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
                 "ID", "Nombre", "Apellido", "DNI", "Sponsor"
             }
         ));
-        jScrollPane1.setViewportView(tblListaClientes);
+        jScrollPane1.setViewportView(tblLisataClientes);
 
         lblFiltrar.setText("Filtrar por:");
 
         cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Nombre", "Apellido", "DNI" }));
 
-        lblBuscar.setText("Buscar:");
+        jLabel1.setText("Buscar:");
 
         javax.swing.GroupLayout panListaClienteLayout = new javax.swing.GroupLayout(panListaCliente);
         panListaCliente.setLayout(panListaClienteLayout);
@@ -69,7 +69,7 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblBuscar)
+                        .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))
@@ -86,7 +86,7 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
                     .addComponent(lblFiltrar)
                     .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBuscar))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -109,11 +109,11 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbOpciones;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblFiltrar;
     private javax.swing.JPanel panListaCliente;
-    private javax.swing.JTable tblListaClientes;
+    private javax.swing.JTable tblLisataClientes;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
