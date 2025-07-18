@@ -11,7 +11,7 @@ public class Conexion {
         Class.forName("com.mysql.cj.jdbc.Driver");
         url = "jdbc:mysql://localhost:3306/driveplus";
         user = "root";       
-        password = "197283";
+        password = "juanfer2113";
         return DriverManager.getConnection(url, user, password);
     }
 }

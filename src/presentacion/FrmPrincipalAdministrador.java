@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author JuanMistery
@@ -47,6 +49,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mniListaReserva = new javax.swing.JMenuItem();
         mniListaEmpleado = new javax.swing.JMenuItem();
         mniListaRegistro = new javax.swing.JMenuItem();
+        mniListaAgencia = new javax.swing.JRadioButtonMenuItem();
         mnuEliminar = new javax.swing.JMenu();
         mniEliminarCliente = new javax.swing.JMenuItem();
         mniEliminarAutomovil = new javax.swing.JMenuItem();
@@ -90,6 +93,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuAgregar.add(mniAgregarEmpleados);
 
         mniAgregarAgencias.setText("Agencias");
+        mniAgregarAgencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarAgenciasActionPerformed(evt);
+            }
+        });
         mnuAgregar.add(mniAgregarAgencias);
 
         mnbAdministrador.add(mnuAgregar);
@@ -129,6 +137,15 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
 
         mniListaRegistro.setText("Registros");
         mnuListas.add(mniListaRegistro);
+
+        mniListaAgencia.setSelected(true);
+        mniListaAgencia.setText("Agencias");
+        mniListaAgencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaAgenciaActionPerformed(evt);
+            }
+        });
+        mnuListas.add(mniListaAgencia);
 
         mnbAdministrador.add(mnuListas);
 
@@ -171,6 +188,26 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mniAgregarEmpleadosActionPerformed
 
+    private void mniAgregarAgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarAgenciasActionPerformed
+        centrarInternalFrame(new IfrmAgregarAgencia());
+    }//GEN-LAST:event_mniAgregarAgenciasActionPerformed
+
+    private void mniListaAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAgenciaActionPerformed
+        centrarInternalFrame(new IfrmListaAgencia());
+    }//GEN-LAST:event_mniListaAgenciaActionPerformed
+
+    private void centrarInternalFrame(JInternalFrame interna) {
+        int x = dspAdministrador.getWidth()/2 - interna.getWidth()/2;
+        int y = dspAdministrador.getHeight()/2 - interna.getHeight()/2;
+        if(interna.isShowing())
+            interna.setLocation(x, y);
+        else {
+            dspAdministrador.add(interna);
+            interna.setLocation(x, y);
+            interna.show();
+        }        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -219,6 +256,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniEliminarCliente;
     private javax.swing.JMenuItem mniEliminarEmpleado;
     private javax.swing.JMenuItem mniEliminarGraaje;
+    private javax.swing.JRadioButtonMenuItem mniListaAgencia;
     private javax.swing.JMenuItem mniListaAutomóviles;
     private javax.swing.JMenuItem mniListaCliente;
     private javax.swing.JMenuItem mniListaEmpleado;

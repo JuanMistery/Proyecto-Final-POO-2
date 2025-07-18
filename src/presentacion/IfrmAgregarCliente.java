@@ -55,17 +55,13 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
 
         lblSponsorCliente.setText("SPONSOR (ID):");
 
-        txtNombreCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreClienteActionPerformed(evt);
-            }
-        });
+        txtNombreCliente.setEnabled(false);
 
-        txtApellidoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoClienteActionPerformed(evt);
-            }
-        });
+        txtApellidoCliente.setEnabled(false);
+
+        txtDniCliente.setEnabled(false);
+
+        txtSponsorCliente.setEnabled(false);
 
         lblImagenCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cliente-1.png"))); // NOI18N
 
@@ -92,6 +88,10 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
         lblTelefonoCliente.setText("TELÉFONO:");
 
         lblDireccionCliente.setText("DIRECCIÓN:");
+
+        txtTelefonoCliente.setEnabled(false);
+
+        txtDireccionCliente.setEnabled(false);
 
         javax.swing.GroupLayout panAgregarClienteLayout = new javax.swing.GroupLayout(panAgregarCliente);
         panAgregarCliente.setLayout(panAgregarClienteLayout);
@@ -191,20 +191,13 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreClienteActionPerformed
-
-    private void txtApellidoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoClienteActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+        txtNombreCliente.setEnabled(true);
+        txtApellidoCliente.setEnabled(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
 

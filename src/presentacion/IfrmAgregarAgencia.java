@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import logica.businessLogic.BLAgencia;
+
 /**
  *
  * @author LOQ
@@ -42,15 +44,29 @@ public class IfrmAgregarAgencia extends javax.swing.JInternalFrame {
 
         lblDireccionAgencia.setText("DIRECCION:");
 
+        txtNombreAgencia.setEnabled(false);
+
+        txtDireccionAgencia.setEnabled(false);
+
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnAgregar.setMnemonic('A');
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panAgregarAgenciaLayout = new javax.swing.GroupLayout(panAgregarAgencia);
         panAgregarAgencia.setLayout(panAgregarAgenciaLayout);
@@ -106,6 +122,23 @@ public class IfrmAgregarAgencia extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        activar(true);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String nombreAgencia = txtNombreAgencia.getText();
+        String DireccionAgencia = txtDireccionAgencia.getText();
+        BLAgencia.insertarAgencia(nombreAgencia, DireccionAgencia);
+        activar(false);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void activar(boolean estado){
+        txtNombreAgencia.setEnabled(estado);
+        txtNombreAgencia.setText("");
+        txtDireccionAgencia.setEnabled(estado);
+        txtDireccionAgencia.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;

@@ -8,6 +8,8 @@ import entidades.Agencia;
 import datos.DALAgencia;
 import java.util.ArrayList;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.*;
+import javax.swing.table.*;
 /**
  *
  * @author JuanMistery
@@ -98,4 +100,67 @@ public class BLAgencia {
             return 2;
         }
     }
+    
+    public static void actualizarTablaAgencias(JTable table) {
+        // Definir las columnas
+        String[] columnNames = {"ID", "Nombre", "Dirección"};
+        
+        // Crear el modelo de tabla
+        DefaultTableModel model = new DefaultTableModel(columnNames, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Todas las celdas no editables
+                return false;
+            }
+            
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                // Tipo de datos para cada columna (para mejor renderizado)
+                if (columnIndex == 0) return Integer.class;  // ID
+                return String.class;  // Las demás columnas son String
+            }
+        };
+        
+        // Obtener datos de la capa DAL
+        ArrayList<Agencia> agencias = DALAgencia.listarAgencias();
+        
+        // Llenar el modelo con los datos
+        for (Agencia agencia : agencias) {
+            Object[] rowData = {
+                agencia.getIDAgencia(),
+                agencia.getNombreAgencia(),
+                agencia.getDireccionAgencia()
+            };
+            model.addRow(rowData);
+        }
+        
+        // Aplicar el modelo a la tabla
+        table.setModel(model);
+        
+        // Configurar propiedades adicionales de la tabla
+        configurarPropiedadesTabla(table);
+    }
+
+    private static void configurarPropiedadesTabla(JTable table) {
+        // Habilitar ordenamiento al hacer clic en columnas
+        table.setAutoCreateRowSorter(true);
+        
+        // Ajustar ancho de columnas
+        table.getColumnModel().getColumn(0).setPreferredWidth(50);  // ID
+        table.getColumnModel().getColumn(1).setPreferredWidth(200); // Nombre
+        table.getColumnModel().getColumn(2).setPreferredWidth(300); // Dirección
+        
+        // Permitir selección de una sola fila a la vez
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        // Renderizado mejorado para números (ID)
+        table.setDefaultRenderer(Integer.class, new DefaultTableCellRenderer() {
+            @Override
+            public void setValue(Object value) {
+                setHorizontalAlignment(SwingConstants.CENTER);
+                super.setValue(value);
+            }
+        });
+    }
+
 }
