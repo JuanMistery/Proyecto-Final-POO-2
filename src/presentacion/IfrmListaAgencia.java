@@ -37,7 +37,8 @@ public class IfrmListaAgencia extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         lblBuscar = new javax.swing.JLabel();
 
-        setTitle("Lista De Automóviles");
+        setClosable(true);
+        setTitle("Lista De Agencias");
 
         panListaAgencia.setBackground(new java.awt.Color(255, 255, 255));
 

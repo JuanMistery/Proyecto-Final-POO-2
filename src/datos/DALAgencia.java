@@ -22,7 +22,7 @@ public class DALAgencia {
     
     public static String insertarAgencia(Agencia agencia) {
         String mensaje = null;
-        String sql = "INSERT INTO Agencia (nombre, direccion) VALUES (?, ?)";
+        String sql = "INSERT INTO Agencia (nombre_agencia, direccion) VALUES (?, ?)";
         
         try {
             cn = Conexion.realizarConexion();
@@ -59,7 +59,7 @@ public class DALAgencia {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                agencia = new Agencia(rs.getInt("agencia_id"),rs.getString("nombre"),rs.getString("direccion"));
+                agencia = new Agencia(rs.getInt("agencia_id"),rs.getString("nombre_agencia"),rs.getString("direccion"));
             }
         } catch (ClassNotFoundException | SQLException ex) {
             showMessageDialog(null, ex.getMessage(), "Error", 0);
@@ -85,7 +85,7 @@ public class DALAgencia {
             rs = st.executeQuery(sql);
             
             while (rs.next()) {
-                Agencia agencia = new Agencia(rs.getInt("agencia_id"),rs.getString("nombre"),rs.getString("direccion"));
+                Agencia agencia = new Agencia(rs.getInt("agencia_id"),rs.getString("nombre_agencia"),rs.getString("direccion"));
                 agencias.add(agencia);
             }
         } catch (ClassNotFoundException | SQLException ex) {
@@ -104,7 +104,7 @@ public class DALAgencia {
     
     public static String actualizarAgencia(Agencia agencia) {
         String mensaje = null;
-        String sql = "UPDATE Agencia SET nombre = ?, direccion = ? WHERE agencia_id = ?";
+        String sql = "UPDATE Agencia SET nombre_agencia = ?, direccion = ? WHERE agencia_id = ?";
         
         try {
             cn = Conexion.realizarConexion();
