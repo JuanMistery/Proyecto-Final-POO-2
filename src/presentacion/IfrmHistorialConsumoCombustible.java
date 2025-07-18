@@ -34,6 +34,7 @@ public class IfrmHistorialConsumoCombustible extends javax.swing.JInternalFrame 
         txtBuscar = new javax.swing.JTextField();
         lblBucar = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Historial de Concumo de Combustible");
 
         panReporteConsumoCombustible.setBackground(new java.awt.Color(255, 255, 255));

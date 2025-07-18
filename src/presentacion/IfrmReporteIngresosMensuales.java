@@ -34,6 +34,7 @@ public class IfrmReporteIngresosMensuales extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         lblBucar = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Reporte de Ingresos Mensuales");
 
         panReporteIngresos.setBackground(new java.awt.Color(255, 255, 255));

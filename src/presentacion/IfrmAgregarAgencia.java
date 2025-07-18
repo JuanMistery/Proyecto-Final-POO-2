@@ -34,6 +34,7 @@ public class IfrmAgregarAgencia extends javax.swing.JInternalFrame {
         btnNuevo = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Agregar Agencia");
 
         panAgregarAgencia.setBackground(new java.awt.Color(255, 255, 255));
@@ -43,12 +44,10 @@ public class IfrmAgregarAgencia extends javax.swing.JInternalFrame {
         lblDireccionAgencia.setText("DIRECCION:");
 
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnAgregar.setMnemonic('A');
         btnAgregar.setText("Agregar");
 

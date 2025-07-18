@@ -39,6 +39,7 @@ public class IfrmRegistrarDevolucion extends javax.swing.JInternalFrame {
         btnRegistrar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Registro de Devolución");
 
         panRegistroDevolucion.setBackground(new java.awt.Color(255, 255, 255));
@@ -46,7 +47,6 @@ public class IfrmRegistrarDevolucion extends javax.swing.JInternalFrame {
         lblTitulo.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lblTitulo.setText("Registro de Devolución");
 
-        lblFechaIEntrega.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFechaIEntrega.setText("Fecha Entrega:");
 
         lblCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -63,11 +63,9 @@ public class IfrmRegistrarDevolucion extends javax.swing.JInternalFrame {
         lblCombustible.setText("Combustible:");
 
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnRegistrar.setText("Registrar");
 
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,12 +96,12 @@ public class IfrmRegistrarDevolucion extends javax.swing.JInternalFrame {
                             .addComponent(txtFechaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                             .addComponent(cmbAutomovil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtCombustible))))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panRegistroDevolucionLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addComponent(btnRegistrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
         );
         panRegistroDevolucionLayout.setVerticalGroup(

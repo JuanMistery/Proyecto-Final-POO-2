@@ -47,6 +47,7 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
         lblAgencia = new javax.swing.JLabel();
         txtIDAgencia = new javax.swing.JTextField();
 
+        setClosable(true);
         setTitle("Agregar Empleado");
 
         panAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
@@ -63,15 +64,11 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
 
         lblContraseniaEmpleado.setText("CONTRASEÑA:");
 
-        lblImagenEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empleado-1.png"))); // NOI18N
-
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnAgregar.setMnemonic('A');
         btnAgregar.setText("Agregar");
 

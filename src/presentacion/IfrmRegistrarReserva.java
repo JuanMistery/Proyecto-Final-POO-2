@@ -43,6 +43,7 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
         btnRegistrar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Registro de Reserva");
 
         panRegistroReserva.setBackground(new java.awt.Color(255, 255, 255));
@@ -75,11 +76,9 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
         lblGasolina.setText("Gasolina:");
 
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnRegistrar.setText("Registrar");
 
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,8 +117,8 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panRegistroReservaLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addComponent(btnRegistrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
         );
         panRegistroReservaLayout.setVerticalGroup(

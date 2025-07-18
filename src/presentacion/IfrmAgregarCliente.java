@@ -43,6 +43,7 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
         txtTelefonoCliente = new javax.swing.JTextField();
         txtDireccionCliente = new javax.swing.JTextField();
 
+        setClosable(true);
         setTitle("Agregar Cliente");
 
         panAgregarCliente.setBackground(new java.awt.Color(255, 255, 255));
@@ -67,10 +68,7 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        lblImagenCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cliente-1.png"))); // NOI18N
-
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnGuardar.setMnemonic('A');
         btnGuardar.setText("Agregar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +78,6 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
         });
 
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +123,7 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
                         .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                             .addComponent(txtSponsorCliente))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panAgregarClienteLayout.createSequentialGroup()
                         .addComponent(lblImagenCliente)

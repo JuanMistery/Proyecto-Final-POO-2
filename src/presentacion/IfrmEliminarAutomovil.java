@@ -8,12 +8,12 @@ package presentacion;
  *
  * @author LOQ
  */
-public class IfrmListaAutomovil extends javax.swing.JInternalFrame {
+public class IfrmEliminarAutomovil extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmListaCliente
      */
-    public IfrmListaAutomovil() {
+    public IfrmEliminarAutomovil() {
         initComponents();
     }
 
@@ -29,13 +29,12 @@ public class IfrmListaAutomovil extends javax.swing.JInternalFrame {
         panListaAutomovil = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListaAutomoviles = new javax.swing.JTable();
-        lblFiltrar = new javax.swing.JLabel();
-        cmbOpciones = new javax.swing.JComboBox<>();
         txtBuscar = new javax.swing.JTextField();
         lblBuscar = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Lista De Automóviles");
+        setTitle("Eliminar Automóvil");
 
         panListaAutomovil.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -52,43 +51,45 @@ public class IfrmListaAutomovil extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblListaAutomoviles);
 
-        lblFiltrar.setText("Filtrar por:");
-
-        cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Placa", "Modelo", "Marca", "Garaje" }));
-
         lblBuscar.setText("Buscar:");
+
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEliminar.setMnemonic('E');
+        btnEliminar.setText("Eliminar");
 
         javax.swing.GroupLayout panListaAutomovilLayout = new javax.swing.GroupLayout(panListaAutomovil);
         panListaAutomovil.setLayout(panListaAutomovilLayout);
         panListaAutomovilLayout.setHorizontalGroup(
             panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panListaAutomovilLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panListaAutomovilLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(lblFiltrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(panListaAutomovilLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addComponent(lblBuscar)
                         .addGap(18, 18, 18)
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
-                    .addGroup(panListaAutomovilLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))))
         );
         panListaAutomovilLayout.setVerticalGroup(
             panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panListaAutomovilLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFiltrar)
-                    .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panListaAutomovilLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(panListaAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblBuscar))
+                        .addGap(18, 27, Short.MAX_VALUE))
+                    .addGroup(panListaAutomovilLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -109,10 +110,9 @@ public class IfrmListaAutomovil extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbOpciones;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuscar;
-    private javax.swing.JLabel lblFiltrar;
     private javax.swing.JPanel panListaAutomovil;
     private javax.swing.JTable tblListaAutomoviles;
     private javax.swing.JTextField txtBuscar;

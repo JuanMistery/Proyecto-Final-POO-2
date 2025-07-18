@@ -34,6 +34,7 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
         btnNuevo = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("Agregar Garaje");
 
         panAgregarGaraje.setBackground(new java.awt.Color(255, 255, 255));
@@ -43,12 +44,10 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
         lblDireccionGaraje.setText("DIRECCIÓN:");
 
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnAgregar.setMnemonic('A');
         btnAgregar.setText("Agregar");
 
@@ -63,9 +62,7 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
                     .addComponent(lblDireccionGaraje))
                 .addGap(21, 21, 21)
                 .addGroup(panAgregarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panAgregarGarajeLayout.createSequentialGroup()
-                        .addComponent(txtNombreGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtNombreGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDireccionGaraje))
                 .addGap(112, 112, 112))
             .addGroup(panAgregarGarajeLayout.createSequentialGroup()
