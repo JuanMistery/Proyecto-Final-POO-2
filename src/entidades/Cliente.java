@@ -20,6 +20,17 @@ public class Cliente extends Persona{
         this.sponsorID = sponsorID;
     }
 
+    public Cliente(String DNI, int sponsorID, String nombres, String apellidos, String telefono, String direccion) {
+        super(nombres, apellidos, telefono, direccion);
+        this.DNI = DNI;
+        this.sponsorID = sponsorID;
+    }
+
+    public Cliente(String DNI, String nombres, String apellidos, String telefono, String direccion) {
+        super(nombres, apellidos, telefono, direccion);
+        this.DNI = DNI;
+    }
+
     public int getClienteID() {
         return clienteID;
     }
