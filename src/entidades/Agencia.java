@@ -9,22 +9,27 @@ package entidades;
  * @author LOQ
  */
 public class Agencia {
-    private String IDAgengia;
+    private int IDAgencia;
     private String nombreAgencia;
-    private String direccion;
+    private String direccionAgencia;
 
-    public Agencia(String IDAgengia, String nombreAgencia, String direccion) {
-        this.IDAgengia = IDAgengia;
+    public Agencia(int IDAgencia, String nombreAgencia, String direccionAgencia) {
+        this.IDAgencia = IDAgencia;
         this.nombreAgencia = nombreAgencia;
-        this.direccion = direccion;
+        this.direccionAgencia = direccionAgencia;
     }
 
-    public String getIDAgengia() {
-        return IDAgengia;
+    public Agencia(String nombreAgencia, String direccionAgencia) {
+        this.nombreAgencia = nombreAgencia;
+        this.direccionAgencia = direccionAgencia;
     }
 
-    public void setIDAgengia(String IDAgengia) {
-        this.IDAgengia = IDAgengia;
+    public int getIDAgencia() {
+        return IDAgencia;
+    }
+
+    public void setIDAgencia(int IDAgencia) {
+        this.IDAgencia = IDAgencia;
     }
 
     public String getNombreAgencia() {
@@ -35,17 +40,17 @@ public class Agencia {
         this.nombreAgencia = nombreAgencia;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getDireccionAgencia() {
+        return direccionAgencia;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccion(String direccionAgencia) {
+        this.direccionAgencia = direccionAgencia;
     }
 
     @Override
     public String toString() {
-        return "Agencia{" + "IDAgengia=" + IDAgengia + ", nombreAgencia=" + nombreAgencia + ", direccion=" + direccion + '}';
+        return "Agencia{" + "IDAgencia=" + IDAgencia + ", nombreAgencia=" + nombreAgencia + ", direccion=" + direccionAgencia + '}';
     }
     
     
