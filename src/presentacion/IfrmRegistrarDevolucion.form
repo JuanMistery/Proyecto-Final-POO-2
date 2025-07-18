@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
-    <Property name="title" type="java.lang.String" value="Registro de Reserva"/>
+    <Property name="title" type="java.lang.String" value="Registro de Devoluci&#xf3;n"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -22,17 +22,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panRegistroReserva" alignment="0" max="32767" attributes="0"/>
+          <Component id="panRegistroDevolucion" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panRegistroReserva" alignment="0" max="32767" attributes="0"/>
+          <Component id="panRegistroDevolucion" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="panRegistroReserva">
+    <Container class="javax.swing.JPanel" name="panRegistroDevolucion">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -52,26 +52,22 @@
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblFechaInicio" alignment="0" pref="80" max="32767" attributes="0"/>
-                                  <Component id="lblPrecio" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblFechaIEntrega" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lblCliente" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblFechaFin" max="32767" attributes="0"/>
                               </Group>
                               <Component id="lblAutomovil" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblGasolina" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCombustible" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtPrecio" max="32767" attributes="0"/>
-                              <Component id="txtFechaFin" pref="270" max="32767" attributes="0"/>
                               <Component id="cmbCliente" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtFechaInicio1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtFechaEntrega" alignment="0" pref="270" max="32767" attributes="0"/>
                               <Component id="cmbAutomovil" max="32767" attributes="0"/>
-                              <Component id="txtGasolina" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtCombustible" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                  <EmptySpace pref="73" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
@@ -99,25 +95,15 @@
                   </Group>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblGasolina" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtGasolina" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCombustible" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCombustible" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblFechaIEntrega" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtFechaEntrega" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFechaInicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFechaInicio1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="lblFechaFin" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFechaFin" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnRegistrar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="btnNuevo" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
@@ -133,15 +119,15 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Registro de Reserva"/>
+            <Property name="text" type="java.lang.String" value="Registro de Devoluci&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblFechaInicio">
+        <Component class="javax.swing.JLabel" name="lblFechaIEntrega">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Fecha Inicio:"/>
+            <Property name="text" type="java.lang.String" value="Fecha Entrega:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente">
@@ -150,29 +136,6 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cliente:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPrecio">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Precio"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblFechaFin">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Fecha Fin:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtPrecio">
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtFechaFin">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="DD/MM/AAAA"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbCliente">
@@ -190,7 +153,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFechaInicio1">
+        <Component class="javax.swing.JTextField" name="txtFechaEntrega">
           <Properties>
             <Property name="text" type="java.lang.String" value="DD/MM/AAAA"/>
           </Properties>
@@ -215,12 +178,12 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblGasolina">
+        <Component class="javax.swing.JLabel" name="lblCombustible">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gasolina:"/>
+            <Property name="text" type="java.lang.String" value="Combustible:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtGasolina">
+        <Component class="javax.swing.JTextField" name="txtCombustible">
         </Component>
         <Component class="javax.swing.JButton" name="btnRegistrar">
           <Properties>

@@ -8,12 +8,12 @@ package presentacion;
  *
  * @author LOQ
  */
-public class IfrmListaPago extends javax.swing.JInternalFrame {
+public class IfrmHistorialConsumoCombustible extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmListaCliente
      */
-    public IfrmListaPago() {
+    public IfrmHistorialConsumoCombustible() {
         initComponents();
     }
 
@@ -26,19 +26,19 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panListaPagos = new javax.swing.JPanel();
+        panReporteConsumoCombustible = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblListaPagos = new javax.swing.JTable();
+        tblListaReportes = new javax.swing.JTable();
         lblFiltrar = new javax.swing.JLabel();
         cmbOpciones = new javax.swing.JComboBox<>();
         txtBuscar = new javax.swing.JTextField();
-        lblBuscar = new javax.swing.JLabel();
+        lblBucar = new javax.swing.JLabel();
 
-        setTitle("Lista De Pagos");
+        setTitle("Historial de Concumo de Combustible");
 
-        panListaPagos.setBackground(new java.awt.Color(255, 255, 255));
+        panReporteConsumoCombustible.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblListaPagos.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaReportes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -46,46 +46,46 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Cliente", "Agencia", "Metodo de Pago", "Monto"
+                "N°", "Automóvil", "Reserva", "Litros Iniciales", "Litros Finales"
             }
         ));
-        jScrollPane1.setViewportView(tblListaPagos);
+        jScrollPane1.setViewportView(tblListaReportes);
 
         lblFiltrar.setText("Filtrar por:");
 
-        cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Nombre", "Apellido", "DNI" }));
+        cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Automóvil", "Reserva" }));
 
-        lblBuscar.setText("Buscar:");
+        lblBucar.setText("Buscar:");
 
-        javax.swing.GroupLayout panListaPagosLayout = new javax.swing.GroupLayout(panListaPagos);
-        panListaPagos.setLayout(panListaPagosLayout);
-        panListaPagosLayout.setHorizontalGroup(
-            panListaPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panListaPagosLayout.createSequentialGroup()
-                .addGroup(panListaPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panListaPagosLayout.createSequentialGroup()
+        javax.swing.GroupLayout panReporteConsumoCombustibleLayout = new javax.swing.GroupLayout(panReporteConsumoCombustible);
+        panReporteConsumoCombustible.setLayout(panReporteConsumoCombustibleLayout);
+        panReporteConsumoCombustibleLayout.setHorizontalGroup(
+            panReporteConsumoCombustibleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panReporteConsumoCombustibleLayout.createSequentialGroup()
+                .addGroup(panReporteConsumoCombustibleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panReporteConsumoCombustibleLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(lblFiltrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                        .addComponent(lblBuscar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblBucar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panListaPagosLayout.createSequentialGroup()
+                    .addGroup(panReporteConsumoCombustibleLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panListaPagosLayout.setVerticalGroup(
-            panListaPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panListaPagosLayout.createSequentialGroup()
+        panReporteConsumoCombustibleLayout.setVerticalGroup(
+            panReporteConsumoCombustibleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panReporteConsumoCombustibleLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(panListaPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panReporteConsumoCombustibleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFiltrar)
                     .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBuscar))
+                    .addComponent(lblBucar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -95,11 +95,11 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panListaPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panReporteConsumoCombustible, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panListaPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panReporteConsumoCombustible, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -109,10 +109,10 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbOpciones;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblBuscar;
+    private javax.swing.JLabel lblBucar;
     private javax.swing.JLabel lblFiltrar;
-    private javax.swing.JPanel panListaPagos;
-    private javax.swing.JTable tblListaPagos;
+    private javax.swing.JPanel panReporteConsumoCombustible;
+    private javax.swing.JTable tblListaReportes;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
