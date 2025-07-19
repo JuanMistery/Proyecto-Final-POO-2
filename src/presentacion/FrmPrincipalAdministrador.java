@@ -58,6 +58,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mniEliminarAgencia = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Administrador");
 
         javax.swing.GroupLayout dspAdministradorLayout = new javax.swing.GroupLayout(dspAdministrador);
         dspAdministrador.setLayout(dspAdministradorLayout);
