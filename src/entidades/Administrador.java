@@ -1,38 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
+
 package entidades;
 
-/**
- *
- * @author LOQ
- */
+import presentacion.FrmPrincipalAdministrador;
+
 public class Administrador extends Empleado {
-    private String IDEmpleado;
 
-    public Administrador(String IDEmpleado, String usuario, String contrasenia, String tipoEmpleado, String nombres, String apellidos, String telefono, String direccion) {
-        super(usuario, contrasenia, tipoEmpleado, nombres, apellidos, telefono, direccion);
-        this.IDEmpleado = IDEmpleado;
+    // Constructor completo con datos personales
+    public Administrador(int id, String usuario, String contrasenia, String tipoEmpleado,
+                         String nombres, String apellidos, String telefono, String direccion) {
+        super(id, usuario, contrasenia, tipoEmpleado, nombres, apellidos, telefono, direccion);
     }
 
-    public Administrador(String IDEmpleado, String usuario, String contrasenia, String tipoEmpleado) {
-        super(usuario, contrasenia, tipoEmpleado);
-        this.IDEmpleado = IDEmpleado;
+    // Constructor con datos de acceso
+    public Administrador(int id, String usuario, String contrasenia, String tipoEmpleado) {
+        super(id, usuario, contrasenia, tipoEmpleado);
     }
 
-    public String getIDEmpleado() {
-        return IDEmpleado;
-    }
-
-    public void setIDEmpleado(String IDEmpleado) {
-        this.IDEmpleado = IDEmpleado;
+    @Override
+    public void abrirInterfaz() {
+        new FrmPrincipalAdministrador().setVisible(true);
     }
 
     @Override
     public String toString() {
-        return "Administrador{" + "IDEmpleado=" + IDEmpleado + '}';
+        return "Administrador{" +
+                "ID=" + getID() +
+                ", usuario=" + getUsuario() +
+                ", tipoEmpleado=" + getTipoEmpleado() +
+                '}';
     }
-    
-    
 }

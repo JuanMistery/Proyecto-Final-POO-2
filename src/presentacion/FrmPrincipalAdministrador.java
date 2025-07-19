@@ -30,7 +30,8 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
 
         dspAdministrador = new javax.swing.JDesktopPane();
         mnbAdministrador = new javax.swing.JMenuBar();
-        mnuCerrar = new javax.swing.JMenu();
+        mnuOpciones = new javax.swing.JMenu();
+        mniLogin = new javax.swing.JMenuItem();
         mnuAgregar = new javax.swing.JMenu();
         mniAgregarClientes = new javax.swing.JMenuItem();
         mniAgregarAutomoviles = new javax.swing.JMenuItem();
@@ -70,8 +71,17 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
             .addGap(0, 527, Short.MAX_VALUE)
         );
 
-        mnuCerrar.setText("Cerrar");
-        mnbAdministrador.add(mnuCerrar);
+        mnuOpciones.setText("Opciones");
+
+        mniLogin.setText("Login");
+        mniLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLoginActionPerformed(evt);
+            }
+        });
+        mnuOpciones.add(mniLogin);
+
+        mnbAdministrador.add(mnuOpciones);
 
         mnuAgregar.setText("Agregar");
 
@@ -379,6 +389,12 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
       centrarInternalFrame(ifrmEliminarAgencia);
     }//GEN-LAST:event_mniEliminarAgenciaActionPerformed
 
+    private void mniLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLoginActionPerformed
+      FrmLogin frmLogin = new FrmLogin();
+        frmLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mniLoginActionPerformed
+
     
      //Método utilitario para centrar un formulario interno dentro del escritorio (dspFondo).
     public void centrarInternalFrame(JInternalFrame interna) {
@@ -449,14 +465,15 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniListaGarajes;
     private javax.swing.JMenuItem mniListaRegistro;
     private javax.swing.JMenuItem mniListaReserva;
+    private javax.swing.JMenuItem mniLogin;
     private javax.swing.JMenuItem mniModificarAgencia;
     private javax.swing.JMenuItem mniModificarAutomovil;
     private javax.swing.JMenuItem mniModificarCliente;
     private javax.swing.JMenuItem mniModificarGaraje;
     private javax.swing.JMenu mnuAgregar;
-    private javax.swing.JMenu mnuCerrar;
     private javax.swing.JMenu mnuEliminar;
     private javax.swing.JMenu mnuListas;
     private javax.swing.JMenu mnuModificar;
+    private javax.swing.JMenu mnuOpciones;
     // End of variables declaration//GEN-END:variables
 }

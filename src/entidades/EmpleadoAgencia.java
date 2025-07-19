@@ -4,46 +4,44 @@
  */
 package entidades;
 
-/**
- *
- * @author LOQ
- */
+import presentacion.FrmPrincipalEmpleado;
+
 public class EmpleadoAgencia extends Empleado {
-    private String IDEmpleadoAgencia;
-    private String IDAgencia;
+    private int IDAgencia;
 
-    public EmpleadoAgencia(String IDEmpleadoAgencia, String IDAgencia, String usuario, String contrasenia, String tipoEmpleado, String nombres, String apellidos, String telefono, String direccion) {
-        super(usuario, contrasenia, tipoEmpleado, nombres, apellidos, telefono, direccion);
-        this.IDEmpleadoAgencia = IDEmpleadoAgencia;
+    // Constructor completo con datos personales
+    public EmpleadoAgencia(int id, int IDAgencia, String usuario, String contrasenia, String tipoEmpleado,
+                           String nombres, String apellidos, String telefono, String direccion) {
+        super(id, usuario, contrasenia, tipoEmpleado, nombres, apellidos, telefono, direccion);
         this.IDAgencia = IDAgencia;
     }
 
-    public EmpleadoAgencia(String IDEmpleadoAgencia, String IDAgencia, String usuario, String contrasenia, String tipoEmpleado) {
-        super(usuario, contrasenia, tipoEmpleado);
-        this.IDEmpleadoAgencia = IDEmpleadoAgencia;
+    // Constructor con datos de acceso
+    public EmpleadoAgencia(int id, int IDAgencia, String usuario, String contrasenia, String tipoEmpleado) {
+        super(id, usuario, contrasenia, tipoEmpleado);
         this.IDAgencia = IDAgencia;
     }
 
-    public String getIDEmpleadoAgencia() {
-        return IDEmpleadoAgencia;
-    }
-
-    public void setIDEmpleadoAgencia(String IDEmpleadoAgencia) {
-        this.IDEmpleadoAgencia = IDEmpleadoAgencia;
-    }
-
-    public String getIDAgencia() {
+    public int getIDAgencia() {
         return IDAgencia;
     }
 
-    public void setIDAgencia(String IDAgencia) {
+    public void setIDAgencia(int IDAgencia) {
         this.IDAgencia = IDAgencia;
     }
 
     @Override
-    public String toString() {
-        return "EmpleadoAgencia{" + "IDEmpleadoAgencia=" + IDEmpleadoAgencia + ", IDAgencia=" + IDAgencia + '}';
+    public void abrirInterfaz() {
+        new FrmPrincipalEmpleado().setVisible(true);
     }
-    
-   
+
+    @Override
+    public String toString() {
+        return "EmpleadoAgencia{" +
+                "ID=" + getID() +
+                ", IDAgencia=" + IDAgencia +
+                ", usuario=" + getUsuario() +
+                ", tipoEmpleado=" + getTipoEmpleado() +
+                '}';
+    }
 }

@@ -30,6 +30,8 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
 
         dspEmpleado = new javax.swing.JDesktopPane();
         mnbEmpleado = new javax.swing.JMenuBar();
+        mnuOpciones = new javax.swing.JMenu();
+        mniLogin = new javax.swing.JMenuItem();
         mnuRegistrar = new javax.swing.JMenu();
         mniReserva = new javax.swing.JMenuItem();
         mniPago = new javax.swing.JMenuItem();
@@ -43,7 +45,6 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         mniListaGarajes = new javax.swing.JMenuItem();
         mniListaReservas = new javax.swing.JMenuItem();
         mniListaPagos = new javax.swing.JMenuItem();
-        mnuOpciones = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Empleado de Agencia");
@@ -58,6 +59,18 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
             dspEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 527, Short.MAX_VALUE)
         );
+
+        mnuOpciones.setText("Opciones");
+
+        mniLogin.setText("Login");
+        mniLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLoginActionPerformed(evt);
+            }
+        });
+        mnuOpciones.add(mniLogin);
+
+        mnbEmpleado.add(mnuOpciones);
 
         mnuRegistrar.setText("Registrar");
 
@@ -146,9 +159,6 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
 
         mnbEmpleado.add(mnuLista);
 
-        mnuOpciones.setText("Opciones");
-        mnbEmpleado.add(mnuOpciones);
-
         setJMenuBar(mnbEmpleado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,6 +221,12 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
       centrarInternalFrame(ifrmHistorialConsumoCombustible);
     }//GEN-LAST:event_mniHistorialConsumoActionPerformed
 
+    private void mniLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLoginActionPerformed
+      FrmLogin frmLogin = new FrmLogin();
+        frmLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mniLoginActionPerformed
+
     
       //Método utilitario para centrar un formulario interno dentro del escritorio (dspFondo).
     public void centrarInternalFrame(JInternalFrame interna) {
@@ -271,6 +287,7 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniListaGarajes;
     private javax.swing.JMenuItem mniListaPagos;
     private javax.swing.JMenuItem mniListaReservas;
+    private javax.swing.JMenuItem mniLogin;
     private javax.swing.JMenuItem mniPago;
     private javax.swing.JMenuItem mniReporteIngresos;
     private javax.swing.JMenuItem mniReserva;

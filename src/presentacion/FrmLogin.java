@@ -4,6 +4,10 @@
  */
 package presentacion;
 
+import entidades.Empleado;
+import javax.swing.JOptionPane;
+import logica.BLEmpleado;
+
 /**
  *
  * @author LOQ
@@ -138,7 +142,18 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+      String usuario = txtUsuario.getText();
+    String contrasenia = txtContrasenia.getText();
+
+    BLEmpleado bl = new BLEmpleado();
+    Empleado empleado = bl.login(usuario, contrasenia);
+
+    if (empleado != null) {
+        empleado.abrirInterfaz();
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, "Credenciales incorrectas", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
