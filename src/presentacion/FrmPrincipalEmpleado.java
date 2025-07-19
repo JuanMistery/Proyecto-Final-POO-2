@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author JuanMistery
@@ -28,6 +30,8 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
 
         dspEmpleado = new javax.swing.JDesktopPane();
         mnbEmpleado = new javax.swing.JMenuBar();
+        mnuOpciones = new javax.swing.JMenu();
+        mniLogin = new javax.swing.JMenuItem();
         mnuRegistrar = new javax.swing.JMenu();
         mniReserva = new javax.swing.JMenuItem();
         mniPago = new javax.swing.JMenuItem();
@@ -41,7 +45,6 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         mniListaGarajes = new javax.swing.JMenuItem();
         mniListaReservas = new javax.swing.JMenuItem();
         mniListaPagos = new javax.swing.JMenuItem();
-        mnuOpciones = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Empleado de Agencia");
@@ -57,15 +60,42 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
             .addGap(0, 527, Short.MAX_VALUE)
         );
 
+        mnuOpciones.setText("Opciones");
+
+        mniLogin.setText("Login");
+        mniLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLoginActionPerformed(evt);
+            }
+        });
+        mnuOpciones.add(mniLogin);
+
+        mnbEmpleado.add(mnuOpciones);
+
         mnuRegistrar.setText("Registrar");
 
         mniReserva.setText("Reserva");
+        mniReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniReservaActionPerformed(evt);
+            }
+        });
         mnuRegistrar.add(mniReserva);
 
         mniPago.setText("Pago");
+        mniPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniPagoActionPerformed(evt);
+            }
+        });
         mnuRegistrar.add(mniPago);
 
         mniDevolucion.setText("Devolucion");
+        mniDevolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDevolucionActionPerformed(evt);
+            }
+        });
         mnuRegistrar.add(mniDevolucion);
 
         mnbEmpleado.add(mnuRegistrar);
@@ -76,9 +106,19 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         mnuGenerar.add(mniComprobante);
 
         mniHistorialConsumo.setText("Historial de Consumo");
+        mniHistorialConsumo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniHistorialConsumoActionPerformed(evt);
+            }
+        });
         mnuGenerar.add(mniHistorialConsumo);
 
         mniReporteIngresos.setText("Reporte de Ingresos");
+        mniReporteIngresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniReporteIngresosActionPerformed(evt);
+            }
+        });
         mnuGenerar.add(mniReporteIngresos);
 
         mnbEmpleado.add(mnuGenerar);
@@ -86,21 +126,38 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         mnuLista.setText("Lista");
 
         mniListaAutomoviles.setText("Automoviles");
+        mniListaAutomoviles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaAutomovilesActionPerformed(evt);
+            }
+        });
         mnuLista.add(mniListaAutomoviles);
 
         mniListaGarajes.setText("Garajes");
+        mniListaGarajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaGarajesActionPerformed(evt);
+            }
+        });
         mnuLista.add(mniListaGarajes);
 
         mniListaReservas.setText("Reservas");
+        mniListaReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaReservasActionPerformed(evt);
+            }
+        });
         mnuLista.add(mniListaReservas);
 
         mniListaPagos.setText("Pagos");
+        mniListaPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaPagosActionPerformed(evt);
+            }
+        });
         mnuLista.add(mniListaPagos);
 
         mnbEmpleado.add(mnuLista);
-
-        mnuOpciones.setText("Opciones");
-        mnbEmpleado.add(mnuOpciones);
 
         setJMenuBar(mnbEmpleado);
 
@@ -116,8 +173,74 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mniListaAutomovilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAutomovilesActionPerformed
+        IfrmListaAutomovil ifrmListaAutomovil = new IfrmListaAutomovil();
+      centrarInternalFrame(ifrmListaAutomovil);
+    }//GEN-LAST:event_mniListaAutomovilesActionPerformed
+
+    private void mniListaGarajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaGarajesActionPerformed
+        IfrmListaGaraje ifrmListaGaraje = new IfrmListaGaraje();
+      centrarInternalFrame(ifrmListaGaraje);
+    }//GEN-LAST:event_mniListaGarajesActionPerformed
+
+    private void mniListaReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaReservasActionPerformed
+        IfrmListaReserva ifrmListaReserva = new IfrmListaReserva();
+      centrarInternalFrame(ifrmListaReserva);
+    }//GEN-LAST:event_mniListaReservasActionPerformed
+
+    private void mniListaPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaPagosActionPerformed
+        IfrmListaPago ifrmListaPago = new IfrmListaPago();
+      centrarInternalFrame(ifrmListaPago);
+    }//GEN-LAST:event_mniListaPagosActionPerformed
+
+    private void mniReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniReservaActionPerformed
+      IfrmRegistrarReserva ifrmRegistrarReserva = new IfrmRegistrarReserva();
+      centrarInternalFrame(ifrmRegistrarReserva);
+    }//GEN-LAST:event_mniReservaActionPerformed
+
+    private void mniPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniPagoActionPerformed
+       IfrmRegistrarPago ifrmRegistrarPago = new IfrmRegistrarPago();
+      centrarInternalFrame(ifrmRegistrarPago);
+    }//GEN-LAST:event_mniPagoActionPerformed
+
+    private void mniDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDevolucionActionPerformed
+       IfrmRegistrarDevolucion ifrmRegistrarDevolucion = new IfrmRegistrarDevolucion();
+      centrarInternalFrame(ifrmRegistrarDevolucion);
+    }//GEN-LAST:event_mniDevolucionActionPerformed
+
+    private void mniReporteIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniReporteIngresosActionPerformed
+          IfrmReporteIngresosMensuales ifrmRegistrarReporteIngresosMensuales= new IfrmReporteIngresosMensuales();
+      centrarInternalFrame(ifrmRegistrarReporteIngresosMensuales);
+    }//GEN-LAST:event_mniReporteIngresosActionPerformed
+
+    private void mniHistorialConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHistorialConsumoActionPerformed
+       IfrmHistorialConsumoCombustible ifrmHistorialConsumoCombustible= new IfrmHistorialConsumoCombustible();
+      centrarInternalFrame(ifrmHistorialConsumoCombustible);
+    }//GEN-LAST:event_mniHistorialConsumoActionPerformed
+
+    private void mniLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLoginActionPerformed
+      FrmLogin frmLogin = new FrmLogin();
+        frmLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mniLoginActionPerformed
+
+    
+      //Método utilitario para centrar un formulario interno dentro del escritorio (dspFondo).
+    public void centrarInternalFrame(JInternalFrame interna) {
+        int x, y;
+        x = dspEmpleado.getWidth()/2 - interna.getWidth()/2;
+        y = dspEmpleado.getHeight()/2 - interna.getHeight()/2;
+        if(interna.isShowing())
+            interna.setLocation(x, y);
+        else {
+            dspEmpleado.add(interna);
+            interna.setLocation(x, y);
+            interna.show();
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -164,6 +287,7 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniListaGarajes;
     private javax.swing.JMenuItem mniListaPagos;
     private javax.swing.JMenuItem mniListaReservas;
+    private javax.swing.JMenuItem mniLogin;
     private javax.swing.JMenuItem mniPago;
     private javax.swing.JMenuItem mniReporteIngresos;
     private javax.swing.JMenuItem mniReserva;

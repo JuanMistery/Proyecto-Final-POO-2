@@ -34,6 +34,7 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         lblBuscar = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Lista De Clientes");
 
         panListaCliente.setBackground(new java.awt.Color(255, 255, 255));

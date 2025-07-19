@@ -4,6 +4,21 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="mnbEmpleado">
       <SubComponents>
+        <Menu class="javax.swing.JMenu" name="mnuOpciones">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Opciones"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mniLogin">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Login"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniLoginActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="mnuRegistrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrar"/>
@@ -13,16 +28,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reserva"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniReservaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniPago">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pago"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniPagoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniDevolucion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Devolucion"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDevolucionActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -40,11 +64,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Historial de Consumo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniHistorialConsumoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniReporteIngresos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte de Ingresos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniReporteIngresosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -57,28 +87,35 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Automoviles"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniListaAutomovilesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniListaGarajes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Garajes"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniListaGarajesActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniListaReservas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reservas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniListaReservasActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniListaPagos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pagos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniListaPagosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="mnuOpciones">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Opciones"/>
-          </Properties>
         </Menu>
       </SubComponents>
     </Menu>
@@ -90,7 +127,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="mnbEmpleado"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>

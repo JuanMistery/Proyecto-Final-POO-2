@@ -42,17 +42,17 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
         lblImagenAutomovil = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setClosable(true);
         setTitle("Agregar Automovil");
+        setFocusable(false);
 
         panAgregarAutomovil.setBackground(new java.awt.Color(255, 255, 255));
 
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnAgregar.setMnemonic('A');
         btnAgregar.setText("Agregar");
 
@@ -71,8 +71,6 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
                 txtModeloActionPerformed(evt);
             }
         });
-
-        lblImagenAutomovil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Automovil-1.png"))); // NOI18N
 
         javax.swing.GroupLayout panAgregarAutomovilLayout = new javax.swing.GroupLayout(panAgregarAutomovil);
         panAgregarAutomovil.setLayout(panAgregarAutomovilLayout);

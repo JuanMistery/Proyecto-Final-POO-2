@@ -26,16 +26,18 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panListaCliente = new javax.swing.JPanel();
+        panListaPagos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListaPagos = new javax.swing.JTable();
         lblFiltrar = new javax.swing.JLabel();
         cmbOpciones = new javax.swing.JComboBox<>();
         txtBuscar = new javax.swing.JTextField();
+        lblBuscar = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Lista De Pagos");
 
-        panListaCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panListaPagos.setBackground(new java.awt.Color(255, 255, 255));
 
         tblListaPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,31 +56,37 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
 
         cmbOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Nombre", "Apellido", "DNI" }));
 
-        javax.swing.GroupLayout panListaClienteLayout = new javax.swing.GroupLayout(panListaCliente);
-        panListaCliente.setLayout(panListaClienteLayout);
-        panListaClienteLayout.setHorizontalGroup(
-            panListaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panListaClienteLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblFiltrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-            .addGroup(panListaClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+        lblBuscar.setText("Buscar:");
+
+        javax.swing.GroupLayout panListaPagosLayout = new javax.swing.GroupLayout(panListaPagos);
+        panListaPagos.setLayout(panListaPagosLayout);
+        panListaPagosLayout.setHorizontalGroup(
+            panListaPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panListaPagosLayout.createSequentialGroup()
+                .addGroup(panListaPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panListaPagosLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(lblFiltrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(lblBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panListaPagosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
-        panListaClienteLayout.setVerticalGroup(
-            panListaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panListaClienteLayout.createSequentialGroup()
+        panListaPagosLayout.setVerticalGroup(
+            panListaPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panListaPagosLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(panListaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panListaPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFiltrar)
                     .addComponent(cmbOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -88,11 +96,11 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panListaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panListaPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panListaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panListaPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -102,8 +110,9 @@ public class IfrmListaPago extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbOpciones;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblFiltrar;
-    private javax.swing.JPanel panListaCliente;
+    private javax.swing.JPanel panListaPagos;
     private javax.swing.JTable tblListaPagos;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
