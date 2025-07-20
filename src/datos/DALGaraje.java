@@ -81,6 +81,31 @@ public class DALGaraje {
             cerrarRecursos();
         }
     }
+    
+    public static Garaje obtenerGaraje(String nombre) {
+        String sql = "SELECT * FROM garaje WHERE nombre = ?";
+        
+        try {
+            cn = Conexion.realizarConexion();
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return new Garaje(
+                    rs.getInt("garaje_id"),
+                    rs.getString("nombre"),
+                    rs.getString("direccion")
+                );
+            }
+            return null;
+        } catch (SQLException | ClassNotFoundException ex) {
+            mostrarError(ex);
+            return null;
+        } finally {
+            cerrarRecursos();
+        }
+    }
 
     /**
      * Lista todos los garajes registrados

@@ -63,6 +63,10 @@ public class BLAgencia {
         return DALAgencia.obtenerAgencia(agenciaId);
     }
     
+    public static Agencia obtenerAgencia(String nombre) {
+        return DALAgencia.obtenerAgencia(nombre);
+    }
+    
     public static ArrayList<Agencia> listarAgencias() {
         return DALAgencia.listarAgencias();
     }

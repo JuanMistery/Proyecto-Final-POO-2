@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import logica.businessLogic.BLGaraje;
+
 /**
  *
  * @author LOQ
@@ -15,6 +17,7 @@ public class IfrmListaGaraje extends javax.swing.JInternalFrame {
      */
     public IfrmListaGaraje() {
         initComponents();
+        BLGaraje.mostrarEnTabla(tblListaGarajes, BLGaraje.listarGarajes());
     }
 
     /**
@@ -32,6 +35,9 @@ public class IfrmListaGaraje extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         lblBuscar = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Lista De Garajes");
 
         panListaGaraje.setBackground(new java.awt.Color(255, 255, 255));

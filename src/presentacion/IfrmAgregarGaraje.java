@@ -4,6 +4,10 @@
  */
 package presentacion;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import logica.businessLogic.BLGaraje;
+
 /**
  *
  * @author LOQ
@@ -29,11 +33,14 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
         panAgregarGaraje = new javax.swing.JPanel();
         lblNombreGaraje = new javax.swing.JLabel();
         lblDireccionGaraje = new javax.swing.JLabel();
-        txtNombreGaraje = new javax.swing.JTextField();
-        txtDireccionGaraje = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         btnNuevo = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Agregar Garaje");
 
         panAgregarGaraje.setBackground(new java.awt.Color(255, 255, 255));
@@ -42,15 +49,29 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
 
         lblDireccionGaraje.setText("DIRECCIÓN:");
 
+        txtNombre.setEnabled(false);
+
+        txtDireccion.setEnabled(false);
+
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnAgregar.setMnemonic('A');
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panAgregarGarajeLayout = new javax.swing.GroupLayout(panAgregarGaraje);
         panAgregarGaraje.setLayout(panAgregarGarajeLayout);
@@ -63,10 +84,8 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
                     .addComponent(lblDireccionGaraje))
                 .addGap(21, 21, 21)
                 .addGroup(panAgregarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panAgregarGarajeLayout.createSequentialGroup()
-                        .addComponent(txtNombreGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(txtDireccionGaraje))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDireccion))
                 .addGap(112, 112, 112))
             .addGroup(panAgregarGarajeLayout.createSequentialGroup()
                 .addGap(93, 93, 93)
@@ -81,11 +100,11 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
                 .addGap(11, 11, 11)
                 .addGroup(panAgregarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreGaraje)
-                    .addComponent(txtNombreGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panAgregarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDireccionGaraje)
-                    .addComponent(txtDireccionGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(panAgregarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
@@ -107,6 +126,27 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        activar(true);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String nombreGaraje = txtNombre.getText();
+        String direccionGaraje = txtDireccion.getText();
+        try {
+            BLGaraje.registrarGaraje(nombreGaraje, direccionGaraje);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(IfrmAgregarGaraje.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        activar(false);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void activar(boolean estado){
+        txtNombre.setEnabled(estado);
+        txtNombre.setText("");
+        txtDireccion.setEnabled(estado);
+        txtDireccion.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -114,7 +154,7 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblDireccionGaraje;
     private javax.swing.JLabel lblNombreGaraje;
     private javax.swing.JPanel panAgregarGaraje;
-    private javax.swing.JTextField txtDireccionGaraje;
-    private javax.swing.JTextField txtNombreGaraje;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

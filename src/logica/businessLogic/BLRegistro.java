@@ -30,7 +30,6 @@ public class BLRegistro {
     public static String registrarActividad(int empleadoID, String rolEmpleado, String tipoEvento, String modulo, String descripcion) {
         try {
             Registro nuevoRegistro = new Registro(
-                0, // ID se autogenera
                 empleadoID,
                 rolEmpleado,
                 LocalDateTime.now(),

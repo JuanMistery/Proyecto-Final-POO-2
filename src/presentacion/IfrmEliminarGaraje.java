@@ -12,12 +12,12 @@ import logica.businessLogic.BLGaraje;
  *
  * @author JuanMistery
  */
-public class IfrmModificarGaraje extends javax.swing.JInternalFrame {
+public class IfrmEliminarGaraje extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmRegistrarReserva
      */
-    public IfrmModificarGaraje() {
+    public IfrmEliminarGaraje() {
         initComponents();
         BLGaraje.cargarAgenciasEnComboBox(cmbGaraje);
     }
@@ -38,17 +38,18 @@ public class IfrmModificarGaraje extends javax.swing.JInternalFrame {
         cmbGaraje = new javax.swing.JComboBox<>();
         lblNuevoNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         txtDireccion = new javax.swing.JTextField();
         lblCambio = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Modificar Garaje");
+        setTitle("Eliminar Garaje");
 
         panModificarGaraje.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        lblTitulo.setText("Modificar Garaje");
+        lblTitulo.setText("Eliminar Garaje");
+        lblTitulo.setToolTipText("");
 
         lblNuevaDireccion.setText("Dirección:");
 
@@ -65,19 +66,19 @@ public class IfrmModificarGaraje extends javax.swing.JInternalFrame {
 
         txtNombre.setEnabled(false);
 
-        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnGuardar.setMnemonic('G');
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEliminar.setMnemonic('G');
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
         txtDireccion.setEnabled(false);
 
         lblCambio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCambio.setText("Cambios:");
+        lblCambio.setText("Datos");
 
         javax.swing.GroupLayout panModificarGarajeLayout = new javax.swing.GroupLayout(panModificarGaraje);
         panModificarGaraje.setLayout(panModificarGarajeLayout);
@@ -89,13 +90,10 @@ public class IfrmModificarGaraje extends javax.swing.JInternalFrame {
                         .addGap(27, 27, 27)
                         .addGroup(panModificarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panModificarGarajeLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
                                 .addGroup(panModificarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCambio)
-                                    .addGroup(panModificarGarajeLayout.createSequentialGroup()
-                                        .addGap(40, 40, 40)
-                                        .addGroup(panModificarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblNuevoNombre)
-                                            .addComponent(lblNuevaDireccion))))
+                                    .addComponent(lblNuevoNombre)
+                                    .addComponent(lblNuevaDireccion))
                                 .addGap(35, 35, 35)
                                 .addGroup(panModificarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblTitulo)
@@ -104,10 +102,11 @@ public class IfrmModificarGaraje extends javax.swing.JInternalFrame {
                             .addGroup(panModificarGarajeLayout.createSequentialGroup()
                                 .addComponent(lblGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cmbGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblCambio)))
                     .addGroup(panModificarGarajeLayout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(177, 177, 177)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         panModificarGarajeLayout.setVerticalGroup(
@@ -119,9 +118,9 @@ public class IfrmModificarGaraje extends javax.swing.JInternalFrame {
                 .addGroup(panModificarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGaraje)
                     .addComponent(cmbGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(lblCambio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(14, 14, 14)
                 .addGroup(panModificarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNuevoNombre))
@@ -129,9 +128,9 @@ public class IfrmModificarGaraje extends javax.swing.JInternalFrame {
                 .addGroup(panModificarGarajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNuevaDireccion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -153,34 +152,30 @@ public class IfrmModificarGaraje extends javax.swing.JInternalFrame {
         String item = cmbGaraje.getItemAt(index);
         if (index == 0) {
         txtNombre.setText("");
-        txtNombre.setEnabled(false);
         txtDireccion.setText("");
-        txtDireccion.setEnabled(false);
         return;
         }
         if(BLGaraje.obtenerGaraje(item)!=null){
             txtNombre.setText(BLGaraje.obtenerGaraje(item).getNombre());
-            txtNombre.setEnabled(true);
             txtDireccion.setText(BLGaraje.obtenerGaraje(item).getDireccion());
-            txtDireccion.setEnabled(true);
         }
     }//GEN-LAST:event_cmbGarajeActionPerformed
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int index = cmbGaraje.getSelectedIndex();
         String item = cmbGaraje.getItemAt(index);
         if(index!=0){
             try {
-                BLGaraje.actualizarGaraje(BLGaraje.obtenerGaraje(item).getGarajeID(), txtNombre.getText(), txtDireccion.getText());
+                BLGaraje.eliminarGaraje(BLGaraje.obtenerGaraje(item).getGarajeID());
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(IfrmModificarGaraje.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(IfrmEliminarGaraje.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cmbGaraje;
     private javax.swing.JLabel lblCambio;
     private javax.swing.JLabel lblGaraje;

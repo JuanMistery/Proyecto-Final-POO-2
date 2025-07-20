@@ -48,6 +48,33 @@ public class DALAgencia {
         return mensaje;
     }
     
+    public static Agencia obtenerAgencia(String nombre) {
+        Agencia agencia = null;
+        String sql = "SELECT * FROM Agencia WHERE nombre_agencia = ?";
+        
+        try {
+            cn = Conexion.realizarConexion();
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                agencia = new Agencia(rs.getInt("agencia_id"),rs.getString("nombre_agencia"),rs.getString("direccion"));
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            showMessageDialog(null, ex.getMessage(), "Error", 0);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (cn != null) cn.close();
+            } catch (SQLException ex) {
+                showMessageDialog(null, ex.getMessage(), "Error", 0);
+            }
+        }
+        return agencia;
+    }
+    
     public static Agencia obtenerAgencia(int agenciaId) {
         Agencia agencia = null;
         String sql = "SELECT * FROM Agencia WHERE agencia_id = ?";

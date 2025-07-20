@@ -5,6 +5,7 @@
 package presentacion;
 
 import logica.businessLogic.BLAgencia;
+import logica.businessLogic.BLRegistro;
 
 /**
  *
@@ -12,10 +13,12 @@ import logica.businessLogic.BLAgencia;
  */
 public class IfrmEliminarAgencia extends javax.swing.JInternalFrame {
 
+    int empleadoID;
     /**
      * Creates new form IfrmRegistrarReserva
      */
-    public IfrmEliminarAgencia() {
+    public IfrmEliminarAgencia(int ID) {
+        this.empleadoID=ID;
         initComponents();
         BLAgencia.cargarAgenciasEnComboBox(cmbAgencia);
     }
@@ -142,21 +145,26 @@ public class IfrmEliminarAgencia extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int index = cmbAgencia.getSelectedIndex();
+        String item = cmbAgencia.getItemAt(index);
         if(index!=0){
-            BLAgencia.eliminarAgencia(index);
+            int resultado=BLAgencia.eliminarAgencia(BLAgencia.obtenerAgencia(item).getIDAgencia());
+            if(resultado==0){
+                BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "DELETE" , "AGENCIA", "Se elimino con exito una Agencia");
+            }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void cmbAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgenciaActionPerformed
         int index = cmbAgencia.getSelectedIndex();
+        String item = cmbAgencia.getItemAt(index);
         if (index == 0) {
         txtNombre.setText("");
         txtDireccion.setText("");
         return; // Sale del método para evitar procesamiento adicional
         }
-        if(BLAgencia.obtenerAgencia(index)!=null){
-            txtNombre.setText(BLAgencia.obtenerAgencia(index).getNombreAgencia());
-            txtDireccion.setText(BLAgencia.obtenerAgencia(index).getDireccionAgencia());
+        if(BLAgencia.obtenerAgencia(item)!=null){
+            txtNombre.setText(BLAgencia.obtenerAgencia(item).getNombreAgencia());
+            txtDireccion.setText(BLAgencia.obtenerAgencia(item).getDireccionAgencia());
         }
     }//GEN-LAST:event_cmbAgenciaActionPerformed
 

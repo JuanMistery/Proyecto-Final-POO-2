@@ -16,10 +16,10 @@ public class AuthFacade {
     private final BLAdministrador adminSubsystem = new BLAdministrador();
     private final BLEmpleadoAgencia empleadoSubsystem = new BLEmpleadoAgencia();
 
-    public void autenticar(String usuario, String contrasenia, JFrame parentFrame) {
+    public void autenticar(String usuario, String contrasenia, JFrame parentFrame) throws ClassNotFoundException {
         if (adminSubsystem.ValidarCredenciales(usuario, contrasenia)) {
-            new FrmPrincipalAdministrador(adminSubsystem.obtenerID()).setVisible(true);
-            BLRegistro.registrarActividad(adminSubsystem.obtenerID(),"ADMINISTRADOR", "LOGIN" , "AUTH", "Inicio Exitoso:" + BLAdministrador.obtenerAdministrador(adminSubsystem.obtenerID()).getUsuario());
+            new FrmPrincipalAdministrador(BLAdministrador.obtenerIdPorUsuario(usuario)).setVisible(true);
+            BLRegistro.registrarActividad(BLAdministrador.obtenerIdPorUsuario(usuario),"ADMINISTRADOR", "LOGIN" , "AUTH", "Inicio Exitoso:" + BLAdministrador.obtenerAdministrador(adminSubsystem.obtenerID()).getUsuario());
             parentFrame.dispose();
         } 
         else if (empleadoSubsystem.ValidarCredenciales(usuario, contrasenia)) {

@@ -70,12 +70,33 @@ public class BLGaraje {
     public static Garaje obtenerGaraje(int garajeId) {
         return DALGaraje.obtenerPorId(garajeId);
     }
+    
+    public static Garaje obtenerGaraje(String nombre) {
+        return DALGaraje.obtenerGaraje(nombre);
+    }
 
     /**
      * Lista todos los garajes registrados
      */
     public static ArrayList<Garaje> listarGarajes() {
         return DALGaraje.listarTodos();
+    }
+    
+    public static void cargarAgenciasEnComboBox(JComboBox<String> comboBox) {
+        // Limpiar el comboBox primero
+        comboBox.removeAllItems();
+        
+        // Obtener todas las agencias desde el DAL
+        ArrayList<Garaje> garajes = listarGarajes();
+        
+        // Agregar cada nombre de agencia al comboBox
+        for (Garaje garaje : garajes) {
+            comboBox.addItem(garaje.getNombre());
+        }
+        
+        // Opcional: Agregar un ítem vacío al inicio
+        comboBox.insertItemAt("-- Seleccione un Garaje --", 0);
+        comboBox.setSelectedIndex(0);
     }
 
     /**

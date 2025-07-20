@@ -134,6 +134,27 @@ public class DALAdministrador {
         }
         return null;
     }
+    
+    public static int obtenerIdPorUsuario(String usuario) throws ClassNotFoundException{
+        String sql = "SELECT * FROM Administrador WHERE usuario = ?";
+        try{
+            cn = Conexion.realizarConexion();
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                return rs.getInt("admin_id");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, 
+                "Error al obtener administrador: " + ex.getMessage(), 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+        } finally {
+            cerrarRecursos();
+        }
+        return 0;
+    }
 
     // Listar todos los administradores (usa Statement)
     public static ArrayList<Administrador> listarAdministradores() throws ClassNotFoundException {

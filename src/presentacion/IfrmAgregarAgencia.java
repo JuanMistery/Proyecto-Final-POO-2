@@ -5,6 +5,7 @@
 package presentacion;
 
 import logica.businessLogic.BLAgencia;
+import logica.businessLogic.BLRegistro;
 
 /**
  *
@@ -12,10 +13,12 @@ import logica.businessLogic.BLAgencia;
  */
 public class IfrmAgregarAgencia extends javax.swing.JInternalFrame {
 
+    int empleadoID;
     /**
      * Creates new form IfrmAgregarAgencia
      */
-    public IfrmAgregarAgencia() {
+    public IfrmAgregarAgencia(int ID) {
+        this.empleadoID=ID;
         initComponents();
     }
 
@@ -132,7 +135,10 @@ public class IfrmAgregarAgencia extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         String nombreAgencia = txtNombreAgencia.getText();
         String DireccionAgencia = txtDireccionAgencia.getText();
-        BLAgencia.insertarAgencia(nombreAgencia, DireccionAgencia);
+        int resultado= BLAgencia.insertarAgencia(nombreAgencia, DireccionAgencia);
+        if(resultado==0){
+            BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "INSERT" , "AGENCIA", "Se creo con exito una nueva Agencia");
+        }
         activar(false);
     }//GEN-LAST:event_btnAgregarActionPerformed
 

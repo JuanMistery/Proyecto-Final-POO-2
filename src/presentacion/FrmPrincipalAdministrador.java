@@ -92,6 +92,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuAgregar.add(mniAgregarAutomoviles);
 
         mniAgregarGarajes.setText("Garajes");
+        mniAgregarGarajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarGarajesActionPerformed(evt);
+            }
+        });
         mnuAgregar.add(mniAgregarGarajes);
 
         mniAgregarEmpleados.setText("Empleados");
@@ -121,6 +126,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuModificar.add(mniModificarAutomovil);
 
         mniModificarGaraje.setText("Garaje");
+        mniModificarGaraje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniModificarGarajeActionPerformed(evt);
+            }
+        });
         mnuModificar.add(mniModificarGaraje);
 
         mniModificarAgencia.setText("Agencia");
@@ -142,6 +152,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuListas.add(mniListaAutomóviles);
 
         mniListaGarajes.setText("Garajes");
+        mniListaGarajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaGarajesActionPerformed(evt);
+            }
+        });
         mnuListas.add(mniListaGarajes);
 
         mniListaReserva.setText("Reservas");
@@ -196,6 +211,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuEliminar.add(mniEliminarAutomovil);
 
         mniEliminarGraaje.setText("Garaje");
+        mniEliminarGraaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEliminarGraajeActionPerformed(evt);
+            }
+        });
         mnuEliminar.add(mniEliminarGraaje);
 
         mniEliminarEmpleado.setText("Empleado");
@@ -244,7 +264,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_mniAgregarEmpleadosActionPerformed
 
     private void mniAgregarAgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarAgenciasActionPerformed
-        centrarInternalFrame(new IfrmAgregarAgencia());
+        centrarInternalFrame(new IfrmAgregarAgencia(empleadoID));
     }//GEN-LAST:event_mniAgregarAgenciasActionPerformed
 
     private void mniListaAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAgenciaActionPerformed
@@ -290,14 +310,34 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_mniListaAdministradorActionPerformed
 
     private void mniModificarAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniModificarAgenciaActionPerformed
-        IfrmModificarAgencia ifrmModificarAgencia = new IfrmModificarAgencia();
+        IfrmModificarAgencia ifrmModificarAgencia = new IfrmModificarAgencia(empleadoID);
         centrarInternalFrame(ifrmModificarAgencia);
     }//GEN-LAST:event_mniModificarAgenciaActionPerformed
 
     private void mniEliminarAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarAgenciaActionPerformed
-        IfrmEliminarAgencia ifrmEliminarAgencia = new IfrmEliminarAgencia();
+        IfrmEliminarAgencia ifrmEliminarAgencia = new IfrmEliminarAgencia(empleadoID);
         centrarInternalFrame(ifrmEliminarAgencia);
     }//GEN-LAST:event_mniEliminarAgenciaActionPerformed
+
+    private void mniListaGarajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaGarajesActionPerformed
+        IfrmListaGaraje ifrmListaGaraje = new IfrmListaGaraje();
+        centrarInternalFrame(ifrmListaGaraje);
+    }//GEN-LAST:event_mniListaGarajesActionPerformed
+
+    private void mniAgregarGarajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarGarajesActionPerformed
+        IfrmAgregarGaraje ifrmAgregarGaraje = new IfrmAgregarGaraje();
+        centrarInternalFrame(ifrmAgregarGaraje);
+    }//GEN-LAST:event_mniAgregarGarajesActionPerformed
+
+    private void mniModificarGarajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniModificarGarajeActionPerformed
+        IfrmModificarGaraje ifrmModificarGaraje= new IfrmModificarGaraje();
+        centrarInternalFrame(ifrmModificarGaraje);
+    }//GEN-LAST:event_mniModificarGarajeActionPerformed
+
+    private void mniEliminarGraajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarGraajeActionPerformed
+        IfrmEliminarGaraje ifrmEliminarGaraje = new IfrmEliminarGaraje();
+        centrarInternalFrame(ifrmEliminarGaraje);
+    }//GEN-LAST:event_mniEliminarGraajeActionPerformed
 
     private void centrarInternalFrame(JInternalFrame interna) {
         int x = dspAdministrador.getWidth()/2 - interna.getWidth()/2;

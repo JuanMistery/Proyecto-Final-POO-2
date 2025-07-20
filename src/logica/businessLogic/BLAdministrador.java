@@ -88,7 +88,11 @@ public class BLAdministrador implements AuthSystem {
                 JOptionPane.ERROR_MESSAGE);
             return null;
         }
-    }    
+    }   
+    
+    public static int obtenerIdPorUsuario(String usuario) throws ClassNotFoundException{
+        return DALAdministrador.obtenerIdPorUsuario(usuario);
+    }
 
     // Validaciones privadas
     private static String validarDatos(String nombres, String apellidos, String telefono,

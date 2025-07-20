@@ -29,7 +29,6 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
         panAgregarAutomovil = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
-        txtGrajeAsignado = new javax.swing.JTextField();
         lblGarajeAsignado = new javax.swing.JLabel();
         txtColor = new javax.swing.JTextField();
         lblMarca = new javax.swing.JLabel();
@@ -40,6 +39,7 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
         txtPlaca = new javax.swing.JTextField();
         txtModelo = new javax.swing.JTextField();
         lblImagenAutomovil = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setTitle("Agregar Automovil");
@@ -74,6 +74,8 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
 
         lblImagenAutomovil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Automovil-1.png"))); // NOI18N
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout panAgregarAutomovilLayout = new javax.swing.GroupLayout(panAgregarAutomovil);
         panAgregarAutomovil.setLayout(panAgregarAutomovilLayout);
         panAgregarAutomovilLayout.setHorizontalGroup(
@@ -89,8 +91,8 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
                 .addGroup(panAgregarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panAgregarAutomovilLayout.createSequentialGroup()
                         .addComponent(lblGarajeAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGrajeAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panAgregarAutomovilLayout.createSequentialGroup()
                         .addGroup(panAgregarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panAgregarAutomovilLayout.createSequentialGroup()
@@ -138,11 +140,11 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
                             .addComponent(lblColor)
                             .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lblImagenAutomovil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(panAgregarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGarajeAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGrajeAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(panAgregarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,6 +173,7 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel lblColor;
     private javax.swing.JLabel lblGarajeAsignado;
     private javax.swing.JLabel lblImagenAutomovil;
@@ -179,7 +182,6 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPlaca;
     private javax.swing.JPanel panAgregarAutomovil;
     private javax.swing.JTextField txtColor;
-    private javax.swing.JTextField txtGrajeAsignado;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtPlaca;
