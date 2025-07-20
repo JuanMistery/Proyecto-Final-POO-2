@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author JuanMistery
@@ -42,6 +44,7 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         mniListaReservas = new javax.swing.JMenuItem();
         mniListaPagos = new javax.swing.JMenuItem();
         mnuOpciones = new javax.swing.JMenu();
+        mniCerrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Empleado de Agencia");
@@ -58,6 +61,11 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         );
 
         mnuRegistrar.setText("Registrar");
+        mnuRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRegistrarActionPerformed(evt);
+            }
+        });
 
         mniReserva.setText("Reserva");
         mnuRegistrar.add(mniReserva);
@@ -84,6 +92,11 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         mnbEmpleado.add(mnuGenerar);
 
         mnuLista.setText("Lista");
+        mnuLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListaActionPerformed(evt);
+            }
+        });
 
         mniListaAutomoviles.setText("Automoviles");
         mnuLista.add(mniListaAutomoviles);
@@ -100,6 +113,15 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         mnbEmpleado.add(mnuLista);
 
         mnuOpciones.setText("Opciones");
+
+        mniCerrar.setText("Cerrar");
+        mniCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniCerrarActionPerformed(evt);
+            }
+        });
+        mnuOpciones.add(mniCerrar);
+
         mnbEmpleado.add(mnuOpciones);
 
         setJMenuBar(mnbEmpleado);
@@ -118,14 +140,39 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mniCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCerrarActionPerformed
+        this.dispose();
+        new FrmLogin().setVisible(true);
+    }//GEN-LAST:event_mniCerrarActionPerformed
+
+    private void mnuRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRegistrarActionPerformed
+        centrarInternalFrame(new IfrmRegistrarReserva());
+    }//GEN-LAST:event_mnuRegistrarActionPerformed
+
+    private void mnuListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuListaActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
+    private void centrarInternalFrame(JInternalFrame interna) {
+        int x = dspEmpleado.getWidth()/2 - interna.getWidth()/2;
+        int y = dspEmpleado.getHeight()/2 - interna.getHeight()/2;
+        if(interna.isShowing())
+            interna.setLocation(x, y);
+        else {
+            dspEmpleado.add(interna);
+            interna.setLocation(x, y);
+            interna.show();
+        }        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dspEmpleado;
     private javax.swing.JMenuBar mnbEmpleado;
+    private javax.swing.JMenuItem mniCerrar;
     private javax.swing.JMenuItem mniComprobante;
     private javax.swing.JMenuItem mniDevolucion;
     private javax.swing.JMenuItem mniHistorialConsumo;

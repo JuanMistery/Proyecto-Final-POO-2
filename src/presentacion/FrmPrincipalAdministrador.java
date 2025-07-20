@@ -30,7 +30,6 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
 
         dspAdministrador = new javax.swing.JDesktopPane();
         mnbAdministrador = new javax.swing.JMenuBar();
-        mnuCerrar = new javax.swing.JMenu();
         mnuAgregar = new javax.swing.JMenu();
         mniAgregarClientes = new javax.swing.JMenuItem();
         mniAgregarAutomoviles = new javax.swing.JMenuItem();
@@ -56,6 +55,8 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mniEliminarGraaje = new javax.swing.JMenuItem();
         mniEliminarEmpleado = new javax.swing.JMenuItem();
         mniEliminarAgencia = new javax.swing.JMenuItem();
+        mnuCerrarSesion = new javax.swing.JMenu();
+        mniCerrar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administrador");
@@ -71,12 +72,14 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
             .addGap(0, 527, Short.MAX_VALUE)
         );
 
-        mnuCerrar.setText("Cerrar");
-        mnbAdministrador.add(mnuCerrar);
-
         mnuAgregar.setText("Agregar");
 
         mniAgregarClientes.setText("Clientes");
+        mniAgregarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarClientesActionPerformed(evt);
+            }
+        });
         mnuAgregar.add(mniAgregarClientes);
 
         mniAgregarAutomoviles.setText("Automóviles");
@@ -153,6 +156,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuEliminar.setText("Eliminar");
 
         mniEliminarCliente.setText("Cliente");
+        mniEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEliminarClienteActionPerformed(evt);
+            }
+        });
         mnuEliminar.add(mniEliminarCliente);
 
         mniEliminarAutomovil.setText("Automóvil");
@@ -168,6 +176,18 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuEliminar.add(mniEliminarAgencia);
 
         mnbAdministrador.add(mnuEliminar);
+
+        mnuCerrarSesion.setText("Cerrar Sesion");
+
+        mniCerrar.setText("Cerrar");
+        mniCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniCerrarActionPerformed(evt);
+            }
+        });
+        mnuCerrarSesion.add(mniCerrar);
+
+        mnbAdministrador.add(mnuCerrarSesion);
 
         setJMenuBar(mnbAdministrador);
 
@@ -186,7 +206,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniAgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarEmpleadosActionPerformed
-        // TODO add your handling code here:
+        centrarInternalFrame(new IfrmAgregarEmpleado());
     }//GEN-LAST:event_mniAgregarEmpleadosActionPerformed
 
     private void mniAgregarAgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarAgenciasActionPerformed
@@ -196,6 +216,19 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     private void mniListaAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAgenciaActionPerformed
         centrarInternalFrame(new IfrmListaAgencia());
     }//GEN-LAST:event_mniListaAgenciaActionPerformed
+
+    private void mniCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCerrarActionPerformed
+        this.dispose();
+        new FrmLogin().setVisible(true);
+    }//GEN-LAST:event_mniCerrarActionPerformed
+
+    private void mniEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniEliminarClienteActionPerformed
+
+    private void mniAgregarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarClientesActionPerformed
+        centrarInternalFrame(new IfrmAgregarCliente());
+    }//GEN-LAST:event_mniAgregarClientesActionPerformed
 
     private void centrarInternalFrame(JInternalFrame interna) {
         int x = dspAdministrador.getWidth()/2 - interna.getWidth()/2;
@@ -221,6 +254,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniAgregarClientes;
     private javax.swing.JMenuItem mniAgregarEmpleados;
     private javax.swing.JMenuItem mniAgregarGarajes;
+    private javax.swing.JMenuItem mniCerrar;
     private javax.swing.JMenuItem mniEliminarAgencia;
     private javax.swing.JMenuItem mniEliminarAutomovil;
     private javax.swing.JMenuItem mniEliminarCliente;
@@ -238,7 +272,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniModificarCliente;
     private javax.swing.JMenuItem mniModificarGaraje;
     private javax.swing.JMenu mnuAgregar;
-    private javax.swing.JMenu mnuCerrar;
+    private javax.swing.JMenu mnuCerrarSesion;
     private javax.swing.JMenu mnuEliminar;
     private javax.swing.JMenu mnuListas;
     private javax.swing.JMenu mnuModificar;
