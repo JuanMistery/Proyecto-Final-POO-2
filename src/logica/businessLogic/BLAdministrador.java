@@ -6,15 +6,19 @@ package logica.businessLogic;
 
 import logica.Facade.AuthSystem;
 import datos.DALAdministrador;
+import datos.DALEmpleadoAgencia;
 import entidades.Administrador;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author JuanMistery
  */
 public class BLAdministrador implements AuthSystem {
-    private static final int LONGITUD_MINIMA_PASSWORD = 8;
+    private static final int LONGITUD_MINIMA_PASSWORD = 5;
     private static final String FORMATO_TELEFONO = "\\d{9,15}"; // Entre 9 y 15 dígitos
     
     private int adminId; // Para implementar obtenerID()
@@ -43,6 +47,10 @@ public class BLAdministrador implements AuthSystem {
             return false;
         }
     }
+    
+    public static ArrayList<Administrador> listarAdministradores() throws ClassNotFoundException{
+        return DALAdministrador.listarAdministradores();
+    }
 
     @Override
     public int obtenerID() {
@@ -50,20 +58,19 @@ public class BLAdministrador implements AuthSystem {
     }
 
     // Métodos adicionales de negocio
-    public static String registrarAdministrador(String nombres, String apellidos, String telefono,
-                                             String direccion, String usuario, String contrasenia) {
+    public static String registrarAdministrador(String nombres, String apellidos, String telefono,String direccion, String usuario, String contrasenia) {
         try {
             // Validaciones de negocio
             String error = validarDatos(nombres, apellidos, telefono, direccion, usuario, contrasenia);
             if (error != null) return error;
 
             // Verificar usuario único
-            if (DALAdministrador.existeUsuario(usuario)) {
+            if (DALAdministrador.existeUsuario(usuario) && DALEmpleadoAgencia.existeUsuario(usuario)) {
                 return "El usuario ya existe";
             }
 
             // Crear y guardar
-            Administrador admin = new Administrador(0, nombres, apellidos, telefono, direccion, usuario, contrasenia);
+            Administrador admin = new Administrador(0, usuario, contrasenia, nombres, apellidos, telefono, direccion);
             return DALAdministrador.insertarAdministrador(admin);
 
         } catch (Exception ex) {
@@ -125,5 +132,23 @@ public class BLAdministrador implements AuthSystem {
         }
         
         return true;
+    }
+    
+    public static void cargarAdministradores(JTable table) throws ClassNotFoundException {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); // Limpiar tabla
+
+        ArrayList<Administrador> empleados = listarAdministradores();
+        
+        for (Administrador emp : empleados) {
+            String nombreCompleto = emp.getNombres() + " " + emp.getApellidos();
+            
+            model.addRow(new Object[]{
+                emp.getIDEmpleado(),
+                nombreCompleto,
+                emp.getTelefono(),
+                emp.getDireccion()
+            });
+        }
     }
 }

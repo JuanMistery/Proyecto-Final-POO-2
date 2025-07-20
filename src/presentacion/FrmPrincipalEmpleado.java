@@ -16,6 +16,7 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public FrmPrincipalEmpleado(int ID) {
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 

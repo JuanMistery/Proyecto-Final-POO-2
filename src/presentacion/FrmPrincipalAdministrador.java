@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 
 /**
@@ -12,10 +14,13 @@ import javax.swing.JInternalFrame;
  */
 public class FrmPrincipalAdministrador extends javax.swing.JFrame {
 
+    int empleadoID;
     /**
      * Creates new form FrmPrincipalAdministrador
      */
     public FrmPrincipalAdministrador(int ID) {
+        this.empleadoID=ID;
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -47,6 +52,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mniListaGarajes = new javax.swing.JMenuItem();
         mniListaReserva = new javax.swing.JMenuItem();
         mniListaEmpleado = new javax.swing.JMenuItem();
+        mniListaAdministrador = new javax.swing.JMenuItem();
         mniListaRegistro = new javax.swing.JMenuItem();
         mniListaAgencia = new javax.swing.JRadioButtonMenuItem();
         mnuEliminar = new javax.swing.JMenu();
@@ -137,7 +143,20 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuListas.add(mniListaReserva);
 
         mniListaEmpleado.setText("Empleados");
+        mniListaEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaEmpleadoActionPerformed(evt);
+            }
+        });
         mnuListas.add(mniListaEmpleado);
+
+        mniListaAdministrador.setText("Administradores");
+        mniListaAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaAdministradorActionPerformed(evt);
+            }
+        });
+        mnuListas.add(mniListaAdministrador);
 
         mniListaRegistro.setText("Registros");
         mniListaRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +230,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniAgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarEmpleadosActionPerformed
-        centrarInternalFrame(new IfrmAgregarEmpleado());
+        centrarInternalFrame(new IfrmAgregarEmpleado(empleadoID));
     }//GEN-LAST:event_mniAgregarEmpleadosActionPerformed
 
     private void mniAgregarAgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarAgenciasActionPerformed
@@ -239,6 +258,26 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         IfrmListaRegistro ifrmListaRegistro = new IfrmListaRegistro();
         centrarInternalFrame(ifrmListaRegistro);
     }//GEN-LAST:event_mniListaRegistroActionPerformed
+
+    private void mniListaEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaEmpleadoActionPerformed
+        IfrmListaEmpleado ifrmListaEmpleado = null;
+        try {
+            ifrmListaEmpleado = new IfrmListaEmpleado();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrmPrincipalAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        centrarInternalFrame(ifrmListaEmpleado);
+    }//GEN-LAST:event_mniListaEmpleadoActionPerformed
+
+    private void mniListaAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAdministradorActionPerformed
+        IfrmListaAdministrador ifrmListaAdministrador = null;
+        try {
+            ifrmListaAdministrador = new IfrmListaAdministrador();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrmPrincipalAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        centrarInternalFrame(ifrmListaAdministrador);
+    }//GEN-LAST:event_mniListaAdministradorActionPerformed
 
     private void centrarInternalFrame(JInternalFrame interna) {
         int x = dspAdministrador.getWidth()/2 - interna.getWidth()/2;
@@ -270,6 +309,7 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniEliminarCliente;
     private javax.swing.JMenuItem mniEliminarEmpleado;
     private javax.swing.JMenuItem mniEliminarGraaje;
+    private javax.swing.JMenuItem mniListaAdministrador;
     private javax.swing.JRadioButtonMenuItem mniListaAgencia;
     private javax.swing.JMenuItem mniListaAutomóviles;
     private javax.swing.JMenuItem mniListaCliente;

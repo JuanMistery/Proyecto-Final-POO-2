@@ -4,18 +4,21 @@
  */
 package logica.businessLogic;
 
+import datos.DALAdministrador;
 import datos.DALEmpleadoAgencia;
 import entidades.EmpleadoAgencia;
 import java.util.*;
 import logica.Facade.AuthSystem;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author JuanMistery
  */
 public class BLEmpleadoAgencia implements AuthSystem {
-    private static final int LONGITUD_MINIMA_PASSWORD = 8;
+    private static final int LONGITUD_MINIMA_PASSWORD = 5;
     private static final String FORMATO_TELEFONO = "\\d{9,15}";
     
     private int empleadoId; // Cache para obtenerID()
@@ -60,12 +63,11 @@ public class BLEmpleadoAgencia implements AuthSystem {
             String error = validarDatos(nombres, apellidos, telefono, direccion, usuario, contrasenia);
             if (error != null) return error;
 
-            if (DALEmpleadoAgencia.existeUsuario(usuario)) {
+            if (DALAdministrador.existeUsuario(usuario) && DALEmpleadoAgencia.existeUsuario(usuario)) {
                 return "El usuario ya existe";
             }
 
-            EmpleadoAgencia empleado = new EmpleadoAgencia(0, agenciaId, nombres, apellidos, 
-                                                          telefono, direccion, usuario, contrasenia);
+            EmpleadoAgencia empleado = new EmpleadoAgencia(agenciaId, 0,usuario, contrasenia, nombres, apellidos, telefono, direccion);
             return DALEmpleadoAgencia.insertarEmpleado(empleado);
 
         } catch (Exception ex) {
@@ -83,6 +85,10 @@ public class BLEmpleadoAgencia implements AuthSystem {
                 JOptionPane.ERROR_MESSAGE);
             return null;
         }
+    }
+    
+    public static ArrayList<EmpleadoAgencia> listarEmpleados() throws ClassNotFoundException{
+        return DALEmpleadoAgencia.listarEmpleados();
     }
 
     // Validaciones privadas
@@ -139,6 +145,26 @@ public class BLEmpleadoAgencia implements AuthSystem {
                 "Error",
                 JOptionPane.ERROR_MESSAGE);
             return new ArrayList<>();
+        }
+    }
+    
+    public static void cargarEmpleados(JTable table) throws ClassNotFoundException {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); // Limpiar tabla
+
+        ArrayList<EmpleadoAgencia> empleados = listarEmpleados();
+        
+        for (EmpleadoAgencia emp : empleados) {
+            String nombreCompleto = emp.getNombres() + " " + emp.getApellidos();
+            String nombreAgencia = BLAgencia.obtenerAgencia(emp.getIDAgencia()).getNombreAgencia();
+            
+            model.addRow(new Object[]{
+                emp.getIDEmpleado(),
+                nombreCompleto,
+                emp.getTelefono(),
+                emp.getDireccion(),
+                nombreAgencia
+            });
         }
     }
 }

@@ -65,12 +65,12 @@ public class DALAdministrador {
             if (rs.next()) {
                 return new Administrador(
                     rs.getInt("admin_id"),
+                    rs.getString("usuario"),
+                    rs.getString("contrasena"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("telefono"),
-                    rs.getString("direccion"),
-                    rs.getString("usuario"),
-                    rs.getString("contrasena")
+                    rs.getString("direccion")
                 );
             }
         } catch (SQLException ex) {
@@ -116,12 +116,12 @@ public class DALAdministrador {
             if (rs.next()) {
                 return new Administrador(
                     rs.getInt("admin_id"),
+                    rs.getString("usuario"),
+                    rs.getString("contrasena"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("telefono"),
-                    rs.getString("direccion"),
-                    rs.getString("usuario"),
-                    rs.getString("contrasena")
+                    rs.getString("direccion")
                 );
             }
         } catch (SQLException ex) {
@@ -148,12 +148,12 @@ public class DALAdministrador {
             while (rs.next()) {
                 lista.add(new Administrador(
                     rs.getInt("admin_id"),
+                    rs.getString("usuario"),
+                    rs.getString("contrasena"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("telefono"),
-                    rs.getString("direccion"),
-                    rs.getString("usuario"),
-                    rs.getString("contrasena")
+                    rs.getString("direccion")
                 ));
             }
         } catch (SQLException ex) {

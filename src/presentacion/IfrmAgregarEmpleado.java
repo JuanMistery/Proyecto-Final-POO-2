@@ -4,17 +4,24 @@
  */
 package presentacion;
 
+import javax.swing.JOptionPane;
+import logica.businessLogic.*;
+
 /**
  *
  * @author LOQ
  */
 public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
 
+    boolean estado = true;
+    int empleadoID;
     /**
      * Creates new form IfrmAgregarEmpleados
      */
-    public IfrmAgregarEmpleado() {
+    public IfrmAgregarEmpleado(int ID) {
+        this.empleadoID=ID;
         initComponents();
+        BLAgencia.cargarAgenciasEnComboBox(cmbAgencia);
     }
 
     /**
@@ -33,19 +40,19 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
         lblTelefonoEmpleado = new javax.swing.JLabel();
         lblUsuarioEmpleado = new javax.swing.JLabel();
         lblContraseniaEmpleado = new javax.swing.JLabel();
-        txtNombreEmpleado = new javax.swing.JTextField();
-        txtApellidoEmpleado = new javax.swing.JTextField();
-        txtDireccionEmpleado = new javax.swing.JTextField();
-        txtTelefonoEmpleado = new javax.swing.JTextField();
-        txtUsuarioEmpleado = new javax.swing.JTextField();
-        txtContraseniaEmpleado = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JTextField();
         lblImagenEmpleado = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
-        cmbTiposDeEmpleado = new javax.swing.JComboBox<>();
+        cmbTipoEmpleado = new javax.swing.JComboBox<>();
         lblTipoEmpleado = new javax.swing.JLabel();
         lblAgencia = new javax.swing.JLabel();
-        txtIDAgencia = new javax.swing.JTextField();
+        cmbAgencia = new javax.swing.JComboBox<>();
 
         setTitle("Agregar Empleado");
 
@@ -63,23 +70,55 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
 
         lblContraseniaEmpleado.setText("CONTRASEÑA:");
 
+        txtNombre.setEnabled(false);
+
+        txtApellido.setEnabled(false);
+
+        txtDireccion.setEnabled(false);
+
+        txtTelefono.setEnabled(false);
+
+        txtUsuario.setEnabled(false);
+
+        txtContrasenia.setEnabled(false);
+
         lblImagenEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empleado-1.png"))); // NOI18N
 
         btnNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnAgregar.setMnemonic('A');
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
-        cmbTiposDeEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Administrador", "Empleado De Agencia" }));
+        cmbTipoEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Administrador", "Empleado De Agencia" }));
+        cmbTipoEmpleado.setToolTipText("");
+        cmbTipoEmpleado.setEnabled(false);
+        cmbTipoEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoEmpleadoActionPerformed(evt);
+            }
+        });
 
         lblTipoEmpleado.setText("TIPO: ");
 
         lblAgencia.setText("AGENCIA:");
+
+        cmbAgencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbAgencia.setEnabled(false);
 
         javax.swing.GroupLayout panAgregarEmpleadoLayout = new javax.swing.GroupLayout(panAgregarEmpleado);
         panAgregarEmpleado.setLayout(panAgregarEmpleadoLayout);
@@ -89,17 +128,13 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
                 .addGap(16, 16, 16)
                 .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panAgregarEmpleadoLayout.createSequentialGroup()
-                        .addComponent(lblAgencia)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtIDAgencia))
-                    .addGroup(panAgregarEmpleadoLayout.createSequentialGroup()
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombreEmpleado)
                             .addComponent(lblApellidoEmpleado))
                         .addGap(27, 27, 27)
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreEmpleado)
-                            .addComponent(txtApellidoEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
+                            .addComponent(txtNombre)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
                     .addGroup(panAgregarEmpleadoLayout.createSequentialGroup()
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDireccionEmpleado)
@@ -107,17 +142,19 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
                             .addComponent(lblUsuarioEmpleado))
                         .addGap(18, 18, 18)
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDireccionEmpleado)
-                            .addComponent(txtTelefonoEmpleado)
-                            .addComponent(txtUsuarioEmpleado)))
+                            .addComponent(txtDireccion)
+                            .addComponent(txtTelefono)
+                            .addComponent(txtUsuario)))
                     .addGroup(panAgregarEmpleadoLayout.createSequentialGroup()
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblContraseniaEmpleado)
-                            .addComponent(lblTipoEmpleado))
+                            .addComponent(lblTipoEmpleado)
+                            .addComponent(lblAgencia))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtContraseniaEmpleado)
-                            .addComponent(cmbTiposDeEmpleado, 0, 201, Short.MAX_VALUE))))
+                            .addComponent(cmbAgencia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtContrasenia)
+                            .addComponent(cmbTipoEmpleado, 0, 201, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panAgregarEmpleadoLayout.createSequentialGroup()
@@ -137,15 +174,15 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
                         .addGap(15, 15, 15)
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNombreEmpleado)
-                            .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblApellidoEmpleado)
-                            .addComponent(txtApellidoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblDireccionEmpleado)
-                            .addComponent(txtDireccionEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panAgregarEmpleadoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblImagenEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -154,25 +191,25 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
                     .addGroup(panAgregarEmpleadoLayout.createSequentialGroup()
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTelefonoEmpleado)
-                            .addComponent(txtTelefonoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19)
                         .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblUsuarioEmpleado)
-                            .addComponent(txtUsuarioEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblContraseniaEmpleado)
-                    .addComponent(txtContraseniaEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbTiposDeEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTipoEmpleado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(panAgregarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAgencia)
-                    .addComponent(txtIDAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -193,11 +230,68 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        estado = activar(estado);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String direccion = txtDireccion.getText();
+        String telefono = txtTelefono.getText();
+        String usuario = txtUsuario.getText();
+        String contrasenia = txtContrasenia.getText();
+        int tipo = cmbTipoEmpleado.getSelectedIndex();
+        int agencia = cmbAgencia.getSelectedIndex();
+        String mensaje = null;
+        if(tipo==1){
+            mensaje=BLAdministrador.registrarAdministrador(nombre, apellido, telefono, direccion, usuario, contrasenia);
+            BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "INSERT" , "ADMINISTRADOR", "Se creo con exito un nuevo Administrador");
+        } else if(tipo ==2 && agencia!=0){
+            mensaje=BLEmpleadoAgencia.registrarEmpleado(agencia, nombre, apellido, telefono, direccion, usuario, contrasenia);
+            BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "INSERT" , "EMPLEADO", "Se creo con exito un nuevo Empleado");
+        }
+        JOptionPane.showMessageDialog(null, mensaje+"/nn"+agencia , "Resultado: ", JOptionPane.ERROR_MESSAGE);
+        estado = activar(estado);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void cmbTipoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoEmpleadoActionPerformed
+        int item = cmbTipoEmpleado.getSelectedIndex();
+        if(item!=1){
+            cmbAgencia.setEnabled(true);
+        } else{
+            cmbAgencia.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmbTipoEmpleadoActionPerformed
+
+    public boolean activar(boolean estado)
+    {
+        txtNombre.setEnabled(estado);
+        txtNombre.setText("");
+        txtApellido.setEnabled(estado);
+        txtApellido.setText("");
+        txtDireccion.setEnabled(estado);
+        txtDireccion.setText("");
+        txtTelefono.setEnabled(estado);
+        txtTelefono.setText("");
+        txtUsuario.setEnabled(estado);
+        txtUsuario.setText("");
+        txtContrasenia.setEnabled(estado);
+        txtContrasenia.setText("");
+        cmbTipoEmpleado.setEnabled(estado);
+        if(estado==true){
+            cmbAgencia.setEnabled(!estado);
+        } else{
+            cmbAgencia.setEnabled(estado);
+        }
+        return !estado;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JComboBox<String> cmbTiposDeEmpleado;
+    private javax.swing.JComboBox<String> cmbAgencia;
+    private javax.swing.JComboBox<String> cmbTipoEmpleado;
     private javax.swing.JLabel lblAgencia;
     private javax.swing.JLabel lblApellidoEmpleado;
     private javax.swing.JLabel lblContraseniaEmpleado;
@@ -208,12 +302,11 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTipoEmpleado;
     private javax.swing.JLabel lblUsuarioEmpleado;
     private javax.swing.JPanel panAgregarEmpleado;
-    private javax.swing.JTextField txtApellidoEmpleado;
-    private javax.swing.JTextField txtContraseniaEmpleado;
-    private javax.swing.JTextField txtDireccionEmpleado;
-    private javax.swing.JTextField txtIDAgencia;
-    private javax.swing.JTextField txtNombreEmpleado;
-    private javax.swing.JTextField txtTelefonoEmpleado;
-    private javax.swing.JTextField txtUsuarioEmpleado;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtContrasenia;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,11 +27,12 @@ public class BLRegistro {
      * @param descripcion Descripción detallada del evento
      * @return String con mensaje de error (null si éxito)
      */
-    public static String registrarActividad(int empleadoID, String tipoEvento, String modulo, String descripcion) {
+    public static String registrarActividad(int empleadoID, String rolEmpleado, String tipoEvento, String modulo, String descripcion) {
         try {
             Registro nuevoRegistro = new Registro(
                 0, // ID se autogenera
                 empleadoID,
+                rolEmpleado,
                 LocalDateTime.now(),
                 tipoEvento,
                 modulo,
@@ -97,7 +98,7 @@ public class BLRegistro {
         for (Registro reg : registros) {
             model.addRow(new Object[]{
                 reg.getRegistroID(),
-                obtenerNombreEmpleado(reg.getEmpleadoID()), // Método auxiliar
+                obtenerEmpleado(reg.getEmpleadoID(),reg.getRolEmpleado()),
                 reg.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")),
                 reg.getTipoEvento(),
                 reg.getDescripcion()
@@ -124,9 +125,12 @@ public class BLRegistro {
      * @param empleadoID ID del empleado
      * @return Nombre del empleado o "N/A" si no se encuentra
      */
-    private static String obtenerNombreEmpleado(int empleadoID) {
-        // Implementar lógica para obtener el nombre desde DALEmpleado
-        return "Empleado #" + empleadoID; // Ejemplo simplificado
+    private static String obtenerEmpleado(int empleadoID,String rol) {
+        if(empleadoID>0){
+            return rol+" "+ empleadoID;
+        } else {
+            return rol;
+        }
     }
 
     /**

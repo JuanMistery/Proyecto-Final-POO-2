@@ -27,16 +27,17 @@ public class DALRegistro {
      * @return null si éxito, mensaje de error si falla
      */
     public static String insertarRegistro(Registro registro) throws ClassNotFoundException {
-        String sql = "INSERT INTO registro (empleado_id, fecha, tipo_evento, evento, descripcion) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO registro (empleado_id,empleado_rol, fecha, tipo_evento, evento, descripcion) VALUES (?,?, ?, ?, ?, ?)";
         
         try {
             cn = Conexion.realizarConexion();
             ps = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, registro.getEmpleadoID());
-            ps.setTimestamp(2, Timestamp.valueOf(registro.getFecha()));
-            ps.setString(3, registro.getTipoEvento());
-            ps.setString(4, registro.getModulo());
-            ps.setString(5, registro.getDescripcion());
+            ps.setString(2, registro.getRolEmpleado());
+            ps.setTimestamp(3, Timestamp.valueOf(registro.getFecha()));
+            ps.setString(4, registro.getTipoEvento());
+            ps.setString(5, registro.getModulo());
+            ps.setString(6, registro.getDescripcion());
             
             if (ps.executeUpdate() == 0) {
                 return "No se pudo registrar la actividad";
@@ -74,6 +75,7 @@ public class DALRegistro {
                 return new Registro(
                     rs.getInt("registro_id"),
                     rs.getInt("empleado_id"),
+                    rs.getString("empleado_rol"),
                     rs.getTimestamp("fecha").toLocalDateTime(),
                     rs.getString("tipo_evento"),
                     rs.getString("evento"),
@@ -106,6 +108,7 @@ public class DALRegistro {
                 registros.add(new Registro(
                     rs.getInt("registro_id"),
                     rs.getInt("empleado_id"),
+                    rs.getString("empleado_rol"),
                     rs.getTimestamp("fecha").toLocalDateTime(),
                     rs.getString("tipo_evento"),
                     rs.getString("evento"),
@@ -139,6 +142,7 @@ public class DALRegistro {
                 registros.add(new Registro(
                     rs.getInt("registro_id"),
                     rs.getInt("empleado_id"),
+                    rs.getString("empleado_rol"),
                     rs.getTimestamp("fecha").toLocalDateTime(),
                     rs.getString("tipo_evento"),
                     rs.getString("evento"),
@@ -174,6 +178,7 @@ public class DALRegistro {
                 registros.add(new Registro(
                     rs.getInt("registro_id"),
                     rs.getInt("empleado_id"),
+                    rs.getString("empleado_rol"),
                     rs.getTimestamp("fecha").toLocalDateTime(),
                     rs.getString("tipo_evento"),
                     rs.getString("evento"),

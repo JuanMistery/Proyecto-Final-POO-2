@@ -5,6 +5,8 @@
 package presentacion;
 
 import logica.Facade.*;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -16,6 +18,7 @@ public class FrmLogin extends javax.swing.JFrame {
      * Creates new form FrmLogin
      */
     public FrmLogin() {
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 

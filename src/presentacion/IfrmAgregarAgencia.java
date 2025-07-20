@@ -36,6 +36,9 @@ public class IfrmAgregarAgencia extends javax.swing.JInternalFrame {
         btnNuevo = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Agregar Agencia");
 
         panAgregarAgencia.setBackground(new java.awt.Color(255, 255, 255));

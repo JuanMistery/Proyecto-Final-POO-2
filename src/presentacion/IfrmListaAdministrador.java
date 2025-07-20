@@ -10,12 +10,12 @@ import logica.businessLogic.BLEmpleadoAgencia;
  *
  * @author LOQ
  */
-public class IfrmListaEmpleado extends javax.swing.JInternalFrame {
+public class IfrmListaAdministrador extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmListaCliente
      */
-    public IfrmListaEmpleado() throws ClassNotFoundException {
+    public IfrmListaAdministrador() throws ClassNotFoundException {
         initComponents();
         BLEmpleadoAgencia.cargarEmpleados(tblListaEmpleados);
     }
@@ -43,13 +43,13 @@ public class IfrmListaEmpleado extends javax.swing.JInternalFrame {
 
         tblListaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Dirección", "Teléfono", "Agencia"
+                "ID", "Nombre", "Dirección", "Teléfono"
             }
         ));
         jScrollPane1.setViewportView(tblListaEmpleados);

@@ -22,7 +22,7 @@ public class DALEmpleadoAgencia {
     
     // Insertar empleado
     public static String insertarEmpleado(EmpleadoAgencia empleado) throws ClassNotFoundException {
-        String sql = "INSERT INTO empleado (agencia_id, nombres, apellidos, telefono, direccion, usuario, contrasenia) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO empleado (agencia_id, nombres, apellidos, telefono, direccion, usuario, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         try {
             cn = Conexion.realizarConexion();
@@ -66,14 +66,14 @@ public class DALEmpleadoAgencia {
             
             if (rs.next()) {
                 return new EmpleadoAgencia(
-                    rs.getInt("empleado_id"),
                     rs.getInt("agencia_id"),
+                    rs.getInt("empleado_id"),
+                    rs.getString("usuario"),
+                    rs.getString("contrasena"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("telefono"),
-                    rs.getString("direccion"),
-                    rs.getString("usuario"),
-                    rs.getString("contrasena")
+                    rs.getString("direccion")
                 );
             }
         } catch (SQLException ex) {
@@ -96,14 +96,14 @@ public class DALEmpleadoAgencia {
             
             while (rs.next()) {
                 lista.add(new EmpleadoAgencia(
-                    rs.getInt("empleado_id"),
                     rs.getInt("agencia_id"),
+                    rs.getInt("empleado_id"),
+                    rs.getString("usuario"),
+                    rs.getString("contrasena"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("telefono"),
-                    rs.getString("direccion"),
-                    rs.getString("usuario"),
-                    rs.getString("contrasena")
+                    rs.getString("direccion")
                 ));
             }
         } catch (SQLException ex) {
@@ -125,14 +125,14 @@ public class DALEmpleadoAgencia {
             
             if (rs.next()) {
                 return new EmpleadoAgencia(
-                    rs.getInt("empleado_id"),
                     rs.getInt("agencia_id"),
+                    rs.getInt("empleado_id"),
+                    rs.getString("usuario"),
+                    rs.getString("contrasena"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("telefono"),
-                    rs.getString("direccion"),
-                    rs.getString("usuario"),
-                    rs.getString("contrasenia")
+                    rs.getString("direccion")
                 );
             }
             return null;
@@ -183,14 +183,14 @@ public class DALEmpleadoAgencia {
             
             while (rs.next()) {
                 empleados.add(new EmpleadoAgencia(
-                    rs.getInt("empleado_id"),
                     rs.getInt("agencia_id"),
+                    rs.getInt("empleado_id"),
+                    rs.getString("usuario"),
+                    rs.getString("contrasena"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("telefono"),
-                    rs.getString("direccion"),
-                    rs.getString("usuario"),
-                    rs.getString("contrasenia")
+                    rs.getString("direccion")
                 ));
             }
             return empleados;

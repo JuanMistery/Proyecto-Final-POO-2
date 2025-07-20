@@ -42,6 +42,23 @@ public class BLAgencia {
         }
     }
     
+    public static void cargarAgenciasEnComboBox(JComboBox<String> comboBox) {
+        // Limpiar el comboBox primero
+        comboBox.removeAllItems();
+        
+        // Obtener todas las agencias desde el DAL
+        ArrayList<Agencia> agencias = DALAgencia.listarAgencias();
+        
+        // Agregar cada nombre de agencia al comboBox
+        for (Agencia agencia : agencias) {
+            comboBox.addItem(agencia.getNombreAgencia());
+        }
+        
+        // Opcional: Agregar un ítem vacío al inicio
+        comboBox.insertItemAt("-- Seleccione una agencia --", 0);
+        comboBox.setSelectedIndex(0);
+    }
+    
     public static Agencia obtenerAgencia(int agenciaId) {
         return DALAgencia.obtenerAgencia(agenciaId);
     }

@@ -13,14 +13,25 @@ import java.time.*;
 public class Registro {
     private int registroID;
     private int empleadoID;
+    private String rolEmpleado;
     private LocalDateTime fecha;
     private String tipoEvento; // "LOGIN", "LOGIN_FALLIDO", "INSERT", "UPDATE", "DELETE"
     private String modulo; // "CLIENTES", "RESERVAS", "AUTOMOVILES", etc.
     private String descripcion;
 
-    public Registro(int registroID, int empleadoID, LocalDateTime fecha, String tipoEvento, String modulo, String descripcion) {
+    public Registro(int registroID, int empleadoID, String rolEmpleado, LocalDateTime fecha, String tipoEvento, String modulo, String descripcion) {
         this.registroID = registroID;
         this.empleadoID = empleadoID;
+        this.rolEmpleado = rolEmpleado;
+        this.fecha = fecha;
+        this.tipoEvento = tipoEvento;
+        this.modulo = modulo;
+        this.descripcion = descripcion;
+    }
+
+    public Registro(int empleadoID, String rolEmpleado, LocalDateTime fecha, String tipoEvento, String modulo, String descripcion) {
+        this.empleadoID = empleadoID;
+        this.rolEmpleado = rolEmpleado;
         this.fecha = fecha;
         this.tipoEvento = tipoEvento;
         this.modulo = modulo;
@@ -36,6 +47,14 @@ public class Registro {
 
     public void setRegistroID(int registroID) {
         this.registroID = registroID;
+    }
+
+    public String getRolEmpleado() {
+        return rolEmpleado;
+    }
+
+    public void setRolEmpleado(String rolEmpleado) {
+        this.rolEmpleado = rolEmpleado;
     }
 
     public int getEmpleadoID() {
