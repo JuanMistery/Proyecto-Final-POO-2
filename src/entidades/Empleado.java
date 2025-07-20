@@ -9,21 +9,26 @@ package entidades;
  * @author LOQ
  */
 public class Empleado extends Persona {
+    private int IDEmpleado;
     private String usuario;
     private String contrasenia;
-    private String tipoEmpleado;
 
-    public Empleado(String usuario, String contrasenia, String tipoEmpleado, String nombres, String apellidos, String telefono, String direccion) {
+    public Empleado(int IDEmpleado, String usuario, String contrasenia, String nombres, String apellidos, String telefono, String direccion) {
         super(nombres, apellidos, telefono, direccion);
+        this.IDEmpleado = IDEmpleado;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
-        this.tipoEmpleado = tipoEmpleado;
     }
 
-    public Empleado(String usuario, String contrasenia, String tipoEmpleado) {
-        this.usuario = usuario;
-        this.contrasenia = contrasenia;
-        this.tipoEmpleado = tipoEmpleado;
+    public Empleado() {
+    }    
+
+    public int getIDEmpleado() {
+        return IDEmpleado;
+    }
+
+    public void setIDEmpleado(int IDEmpleado) {
+        this.IDEmpleado = IDEmpleado;
     }
 
     public String getUsuario() {
@@ -42,17 +47,9 @@ public class Empleado extends Persona {
         this.contrasenia = contrasenia;
     }
 
-    public String getTipoEmpleado() {
-        return tipoEmpleado;
-    }
-
-    public void setTipoEmpleado(String tipoEmpleado) {
-        this.tipoEmpleado = tipoEmpleado;
-    }
-
     @Override
     public String toString() {
-        return "Empleado{" + "usuario=" + usuario + ", contrasenia=" + contrasenia + ", tipoEmpleado=" + tipoEmpleado + '}';
+        return "Empleado{" + "usuario=" + usuario + ", contrasenia=" + contrasenia + '}';
     }
     
     

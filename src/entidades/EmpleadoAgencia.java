@@ -9,40 +9,27 @@ package entidades;
  * @author LOQ
  */
 public class EmpleadoAgencia extends Empleado {
-    private String IDEmpleadoAgencia;
-    private String IDAgencia;
+    private int IDAgencia;
 
-    public EmpleadoAgencia(String IDEmpleadoAgencia, String IDAgencia, String usuario, String contrasenia, String tipoEmpleado, String nombres, String apellidos, String telefono, String direccion) {
-        super(usuario, contrasenia, tipoEmpleado, nombres, apellidos, telefono, direccion);
-        this.IDEmpleadoAgencia = IDEmpleadoAgencia;
+    public EmpleadoAgencia(int IDAgencia, int IDEmpleado, String usuario, String contrasenia, String nombres, String apellidos, String telefono, String direccion) {
+        super(IDEmpleado, usuario, contrasenia, nombres, apellidos, telefono, direccion);
         this.IDAgencia = IDAgencia;
     }
 
-    public EmpleadoAgencia(String IDEmpleadoAgencia, String IDAgencia, String usuario, String contrasenia, String tipoEmpleado) {
-        super(usuario, contrasenia, tipoEmpleado);
-        this.IDEmpleadoAgencia = IDEmpleadoAgencia;
-        this.IDAgencia = IDAgencia;
+    public EmpleadoAgencia() {
     }
 
-    public String getIDEmpleadoAgencia() {
-        return IDEmpleadoAgencia;
-    }
-
-    public void setIDEmpleadoAgencia(String IDEmpleadoAgencia) {
-        this.IDEmpleadoAgencia = IDEmpleadoAgencia;
-    }
-
-    public String getIDAgencia() {
+    public int getIDAgencia() {
         return IDAgencia;
     }
 
-    public void setIDAgencia(String IDAgencia) {
+    public void setIDAgencia(int IDAgencia) {
         this.IDAgencia = IDAgencia;
     }
 
     @Override
     public String toString() {
-        return "EmpleadoAgencia{" + "IDEmpleadoAgencia=" + IDEmpleadoAgencia + ", IDAgencia=" + IDAgencia + '}';
+        return "EmpleadoAgencia{" + ", IDAgencia=" + IDAgencia + '}';
     }
     
    
