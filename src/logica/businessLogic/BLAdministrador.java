@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class BLAdministrador implements AuthSystem {
     private static final int LONGITUD_MINIMA_PASSWORD = 5;
     private static final String FORMATO_TELEFONO = "\\d{9,15}"; // Entre 9 y 15 dígitos
-    
+
     private int adminId; // Para implementar obtenerID()
     private String usuarioActual; // Cache para validaciones
 

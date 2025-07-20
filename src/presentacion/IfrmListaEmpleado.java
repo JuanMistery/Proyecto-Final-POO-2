@@ -49,7 +49,7 @@ public class IfrmListaEmpleado extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Dirección", "Teléfono", "Agencia"
+                "ID", "Nombre", "Teléfono", "Dirección", "Agencia"
             }
         ));
         jScrollPane1.setViewportView(tblListaEmpleados);

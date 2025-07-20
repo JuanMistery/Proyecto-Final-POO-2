@@ -4,7 +4,7 @@
  */
 package presentacion;
 
-import logica.businessLogic.BLEmpleadoAgencia;
+import logica.businessLogic.BLAdministrador;
 
 /**
  *
@@ -17,7 +17,7 @@ public class IfrmListaAdministrador extends javax.swing.JInternalFrame {
      */
     public IfrmListaAdministrador() throws ClassNotFoundException {
         initComponents();
-        BLEmpleadoAgencia.cargarEmpleados(tblListaEmpleados);
+        BLAdministrador.cargarAdministradores(tblListaEmpleados);
     }
 
     /**
@@ -37,7 +37,7 @@ public class IfrmListaAdministrador extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         lblBuscar = new javax.swing.JLabel();
 
-        setTitle("Lista De Empleados");
+        setTitle("Lista De Administradores");
 
         panListaEmpleado.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -49,7 +49,7 @@ public class IfrmListaAdministrador extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Dirección", "Teléfono"
+                "ID", "Nombre", "Teléfono", "Dirección"
             }
         ));
         jScrollPane1.setViewportView(tblListaEmpleados);
