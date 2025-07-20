@@ -9,7 +9,6 @@ package entidades;
  * @author JuanMistery
  */
 public class Automovil {
-    private int automovilID;
     private int garajeID;
     private String placa;
     private String modelo;
@@ -17,8 +16,7 @@ public class Automovil {
     private String marca;
     private int estado;
 
-    public Automovil(int automovilID, int garajeID, String placa, String modelo, String color, String marca, int estado) {
-        this.automovilID = automovilID;
+    public Automovil(int garajeID, String placa, String modelo, String color, String marca, int estado) {
         this.garajeID = garajeID;
         this.placa = placa;
         this.modelo = modelo;
@@ -28,14 +26,6 @@ public class Automovil {
     }
 
     public Automovil() {
-    }
-
-    public int getAutomovilID() {
-        return automovilID;
-    }
-
-    public void setAutomovilID(int automovilID) {
-        this.automovilID = automovilID;
     }
 
     public int getGarajeID() {
@@ -88,6 +78,6 @@ public class Automovil {
 
     @Override
     public String toString() {
-        return "Automovil{" + "automovilID=" + automovilID + ", garajeID=" + garajeID + ", placa=" + placa + ", modelo=" + modelo + ", color=" + color + ", marca=" + marca + ", estado=" + estado + '}';
+        return "Automovil{" +", garajeID=" + garajeID + ", placa=" + placa + ", modelo=" + modelo + ", color=" + color + ", marca=" + marca + ", estado=" + estado + '}';
     }
 }
