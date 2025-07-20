@@ -150,7 +150,7 @@ public class DALAutomovil {
         }
     }
 
-    public static String eliminarAutomovil(String placa) {
+    public static String eliminarAutomovil(String placa) throws ClassNotFoundException {
         String sql = "DELETE FROM vehiculo WHERE placa = ?";
         
         try {
