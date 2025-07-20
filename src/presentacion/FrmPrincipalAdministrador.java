@@ -202,6 +202,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuEliminar.add(mniEliminarEmpleado);
 
         mniEliminarAgencia.setText("Agencia");
+        mniEliminarAgencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEliminarAgenciaActionPerformed(evt);
+            }
+        });
         mnuEliminar.add(mniEliminarAgencia);
 
         mnbAdministrador.add(mnuEliminar);
@@ -288,6 +293,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         IfrmModificarAgencia ifrmModificarAgencia = new IfrmModificarAgencia();
         centrarInternalFrame(ifrmModificarAgencia);
     }//GEN-LAST:event_mniModificarAgenciaActionPerformed
+
+    private void mniEliminarAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarAgenciaActionPerformed
+        IfrmEliminarAgencia ifrmEliminarAgencia = new IfrmEliminarAgencia();
+        centrarInternalFrame(ifrmEliminarAgencia);
+    }//GEN-LAST:event_mniEliminarAgenciaActionPerformed
 
     private void centrarInternalFrame(JInternalFrame interna) {
         int x = dspAdministrador.getWidth()/2 - interna.getWidth()/2;

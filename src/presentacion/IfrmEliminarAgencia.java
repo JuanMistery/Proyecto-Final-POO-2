@@ -10,12 +10,12 @@ import logica.businessLogic.BLAgencia;
  *
  * @author JuanMistery
  */
-public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
+public class IfrmEliminarAgencia extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmRegistrarReserva
      */
-    public IfrmModificarAgencia() {
+    public IfrmEliminarAgencia() {
         initComponents();
         BLAgencia.cargarAgenciasEnComboBox(cmbAgencia);
     }
@@ -36,17 +36,17 @@ public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
         cmbAgencia = new javax.swing.JComboBox<>();
         lblNuevoNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         txtDireccion = new javax.swing.JTextField();
-        lblCambio = new javax.swing.JLabel();
+        lblDatos = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Modificar Agencia");
+        setTitle("Eliminar Agencia");
 
         panModificarCliente.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        lblTitulo.setText("Modificar Agencia");
+        lblTitulo.setText("Eliminar Agencia");
 
         lblNuevaDireccion.setText("Dirección:");
 
@@ -61,17 +61,17 @@ public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
 
         lblNuevoNombre.setText("Nombre:");
 
-        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnGuardar.setMnemonic('G');
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEliminar.setMnemonic('G');
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
-        lblCambio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCambio.setText("Cambios:");
+        lblDatos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDatos.setText("Datos:");
 
         javax.swing.GroupLayout panModificarClienteLayout = new javax.swing.GroupLayout(panModificarCliente);
         panModificarCliente.setLayout(panModificarClienteLayout);
@@ -96,10 +96,10 @@ public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
                                 .addComponent(lblAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblCambio)))
+                            .addComponent(lblDatos)))
                     .addGroup(panModificarClienteLayout.createSequentialGroup()
                         .addGap(177, 177, 177)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         panModificarClienteLayout.setVerticalGroup(
@@ -112,7 +112,7 @@ public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
                     .addComponent(lblAgencia)
                     .addComponent(cmbAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addComponent(lblCambio)
+                .addComponent(lblDatos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panModificarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,7 +122,7 @@ public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNuevaDireccion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
@@ -140,36 +140,32 @@ public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int index = cmbAgencia.getSelectedIndex();
         if(index!=0){
-            BLAgencia.actualizarAgencia(index, txtNombre.getText(),txtDireccion.getText());
+            BLAgencia.eliminarAgencia(index);
         }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void cmbAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAgenciaActionPerformed
         int index = cmbAgencia.getSelectedIndex();
         if (index == 0) {
         txtNombre.setText("");
-        txtNombre.setEnabled(false);
         txtDireccion.setText("");
-        txtDireccion.setEnabled(false);
         return; // Sale del método para evitar procesamiento adicional
         }
         if(BLAgencia.obtenerAgencia(index)!=null){
             txtNombre.setText(BLAgencia.obtenerAgencia(index).getNombreAgencia());
-            txtNombre.setEnabled(true);
             txtDireccion.setText(BLAgencia.obtenerAgencia(index).getDireccionAgencia());
-            txtDireccion.setEnabled(true);
         }
     }//GEN-LAST:event_cmbAgenciaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cmbAgencia;
     private javax.swing.JLabel lblAgencia;
-    private javax.swing.JLabel lblCambio;
+    private javax.swing.JLabel lblDatos;
     private javax.swing.JLabel lblNuevaDireccion;
     private javax.swing.JLabel lblNuevoNombre;
     private javax.swing.JLabel lblTitulo;

@@ -105,7 +105,6 @@ public class DALAgencia {
     public static String actualizarAgencia(Agencia agencia) {
         String mensaje = null;
         String sql = "UPDATE Agencia SET nombre_agencia = ?, direccion = ? WHERE agencia_id = ?";
-        
         try {
             cn = Conexion.realizarConexion();
             ps = cn.prepareStatement(sql);
