@@ -19,13 +19,16 @@ public class AuthFacade {
     public void autenticar(String usuario, String contrasenia, JFrame parentFrame) {
         if (adminSubsystem.ValidarCredenciales(usuario, contrasenia)) {
             new FrmPrincipalAdministrador(adminSubsystem.obtenerID()).setVisible(true);
+            BLRegistro.registrarActividad(adminSubsystem.obtenerID(), "LOGIN" , "AUTH", "Inicio Exitoso:" + BLAdministrador.obtenerAdministrador(adminSubsystem.obtenerID()).getUsuario());
             parentFrame.dispose();
         } 
         else if (empleadoSubsystem.ValidarCredenciales(usuario, contrasenia)) {
             new FrmPrincipalEmpleado(empleadoSubsystem.obtenerID()).setVisible(true);
+            BLRegistro.registrarActividad(adminSubsystem.obtenerID(), "LOGIN" , "AUTH", "Inicio Exitoso:" + BLEmpleadoAgencia.obtenerPorId(adminSubsystem.obtenerID()).getUsuario());
             parentFrame.dispose();
         } 
         else {
+            BLRegistro.registrarActividad(0 , "LOGIN_FALLIDO" , "AUTH", "Intento Fallido por Usuario Anonimo");
             JOptionPane.showMessageDialog(parentFrame, "Credenciales inválidas");
         }
     }

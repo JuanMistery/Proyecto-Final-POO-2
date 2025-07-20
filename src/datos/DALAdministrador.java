@@ -121,7 +121,7 @@ public class DALAdministrador {
                     rs.getString("telefono"),
                     rs.getString("direccion"),
                     rs.getString("usuario"),
-                    rs.getString("contrasenia")
+                    rs.getString("contrasena")
                 );
             }
         } catch (SQLException ex) {

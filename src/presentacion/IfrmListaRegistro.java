@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import logica.businessLogic.BLRegistro;
+
 /**
  *
  * @author LOQ
@@ -15,6 +17,7 @@ public class IfrmListaRegistro extends javax.swing.JInternalFrame {
      */
     public IfrmListaRegistro() {
         initComponents();
+        BLRegistro.cargarRegistrosEnTabla(tblListaRegistro, BLRegistro.obtenerTodosRegistros());
     }
 
     /**
@@ -28,17 +31,18 @@ public class IfrmListaRegistro extends javax.swing.JInternalFrame {
 
         panListaCliente = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblLisataClientes = new javax.swing.JTable();
+        tblListaRegistro = new javax.swing.JTable();
         lblFiltrar = new javax.swing.JLabel();
         cmbOpciones = new javax.swing.JComboBox<>();
         txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setTitle("Lista De Clientes");
+        setResizable(true);
+        setTitle("Lista De Registros");
 
         panListaCliente.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblLisataClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblListaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -49,7 +53,7 @@ public class IfrmListaRegistro extends javax.swing.JInternalFrame {
                 "ID", "Nombre", "Apellido", "DNI", "Sponsor"
             }
         ));
-        jScrollPane1.setViewportView(tblLisataClientes);
+        jScrollPane1.setViewportView(tblListaRegistro);
 
         lblFiltrar.setText("Filtrar por:");
 
@@ -113,7 +117,7 @@ public class IfrmListaRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFiltrar;
     private javax.swing.JPanel panListaCliente;
-    private javax.swing.JTable tblLisataClientes;
+    private javax.swing.JTable tblListaRegistro;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

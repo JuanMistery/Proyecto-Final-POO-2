@@ -140,6 +140,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuListas.add(mniListaEmpleado);
 
         mniListaRegistro.setText("Registros");
+        mniListaRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaRegistroActionPerformed(evt);
+            }
+        });
         mnuListas.add(mniListaRegistro);
 
         mniListaAgencia.setSelected(true);
@@ -229,6 +234,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     private void mniAgregarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarClientesActionPerformed
         centrarInternalFrame(new IfrmAgregarCliente());
     }//GEN-LAST:event_mniAgregarClientesActionPerformed
+
+    private void mniListaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaRegistroActionPerformed
+        IfrmListaRegistro ifrmListaRegistro = new IfrmListaRegistro();
+        centrarInternalFrame(ifrmListaRegistro);
+    }//GEN-LAST:event_mniListaRegistroActionPerformed
 
     private void centrarInternalFrame(JInternalFrame interna) {
         int x = dspAdministrador.getWidth()/2 - interna.getWidth()/2;

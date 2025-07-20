@@ -4,7 +4,7 @@
  */
 package entidades;
 
-import java.util.Date;
+import java.time.*;
 
 /**
  *
@@ -13,12 +13,12 @@ import java.util.Date;
 public class Registro {
     private int registroID;
     private int empleadoID;
-    private Date fecha;
-    private String tipoEvento;
-    private String modulo;
+    private LocalDateTime fecha;
+    private String tipoEvento; // "LOGIN", "LOGIN_FALLIDO", "INSERT", "UPDATE", "DELETE"
+    private String modulo; // "CLIENTES", "RESERVAS", "AUTOMOVILES", etc.
     private String descripcion;
 
-    public Registro(int registroID, int empleadoID, Date fecha, String tipoEvento, String modulo, String descripcion) {
+    public Registro(int registroID, int empleadoID, LocalDateTime fecha, String tipoEvento, String modulo, String descripcion) {
         this.registroID = registroID;
         this.empleadoID = empleadoID;
         this.fecha = fecha;
@@ -46,11 +46,11 @@ public class Registro {
         this.empleadoID = empleadoID;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
