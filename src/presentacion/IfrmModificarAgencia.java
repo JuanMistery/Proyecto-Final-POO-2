@@ -149,7 +149,7 @@ public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
         if(index!=0){
             int resultado= BLAgencia.actualizarAgencia(BLAgencia.obtenerAgencia(item).getIDAgencia(), txtNombre.getText(),txtDireccion.getText());
             if(resultado==0){
-                BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "DELETE" , "AGENCIA", "Se elimino con exito una Agencia");
+                BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "UPDATE" , "AGENCIA", "Se actualizo con exito una Agencia");
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed

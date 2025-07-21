@@ -18,13 +18,13 @@ public class AuthFacade {
 
     public void autenticar(String usuario, String contrasenia, JFrame parentFrame) throws ClassNotFoundException {
         if (adminSubsystem.ValidarCredenciales(usuario, contrasenia)) {
-            new FrmPrincipalAdministrador(BLAdministrador.obtenerIdPorUsuario(usuario)).setVisible(true);
-            BLRegistro.registrarActividad(BLAdministrador.obtenerIdPorUsuario(usuario),"ADMINISTRADOR", "LOGIN" , "AUTH", "Inicio Exitoso:" + BLAdministrador.obtenerAdministrador(adminSubsystem.obtenerID()).getUsuario());
+            new FrmPrincipalAdministrador(adminSubsystem.obtenerIdPorUsuario(usuario)).setVisible(true);
+            BLRegistro.registrarActividad(adminSubsystem.obtenerIdPorUsuario(usuario),"ADMINISTRADOR", "LOGIN" , "AUTH", "Inicio Exitoso:" + BLAdministrador.obtenerAdministrador(adminSubsystem.obtenerIdPorUsuario(usuario)).getUsuario());
             parentFrame.dispose();
         } 
         else if (empleadoSubsystem.ValidarCredenciales(usuario, contrasenia)) {
-            new FrmPrincipalEmpleado(empleadoSubsystem.obtenerID()).setVisible(true);
-            BLRegistro.registrarActividad(adminSubsystem.obtenerID(),"EMPLEADO", "LOGIN" , "AUTH", "Inicio Exitoso:" + BLEmpleadoAgencia.obtenerPorId(adminSubsystem.obtenerID()).getUsuario());
+            new FrmPrincipalEmpleado(empleadoSubsystem.obtenerIdPorUsuario(usuario)).setVisible(true);
+            BLRegistro.registrarActividad(adminSubsystem.obtenerIdPorUsuario(usuario),"EMPLEADO", "LOGIN" , "AUTH", "Inicio Exitoso:" + BLEmpleadoAgencia.obtenerPorId(empleadoSubsystem.obtenerIdPorUsuario(usuario)).getUsuario());
             parentFrame.dispose();
         } 
         else {

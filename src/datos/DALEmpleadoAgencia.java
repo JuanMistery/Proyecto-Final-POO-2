@@ -156,19 +156,25 @@ public class DALEmpleadoAgencia {
         }
     }
     
-    public static boolean ObtenerID(String usuario) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT COUNT(*) FROM empleado WHERE usuario = ?";
-        
-        try {
+    public static int ObtenerID(String usuario) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM empleado WHERE usuario = ?";
+        try{
             cn = Conexion.realizarConexion();
             ps = cn.prepareStatement(sql);
             ps.setString(1, usuario);
             rs = ps.executeQuery();
-            
-            return rs.next() && rs.getInt(1) > 0;
+            if(rs.next()){
+                return rs.getInt("empleado_id");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, 
+                "Error al obtener empleado: " + ex.getMessage(), 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
         } finally {
             cerrarRecursos();
         }
+        return 0;
     }
     
     public static ArrayList<EmpleadoAgencia> listarPorAgencia(int agenciaId) throws SQLException, ClassNotFoundException {

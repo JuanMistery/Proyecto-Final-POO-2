@@ -325,17 +325,17 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_mniListaGarajesActionPerformed
 
     private void mniAgregarGarajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarGarajesActionPerformed
-        IfrmAgregarGaraje ifrmAgregarGaraje = new IfrmAgregarGaraje();
+        IfrmAgregarGaraje ifrmAgregarGaraje = new IfrmAgregarGaraje(empleadoID);
         centrarInternalFrame(ifrmAgregarGaraje);
     }//GEN-LAST:event_mniAgregarGarajesActionPerformed
 
     private void mniModificarGarajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniModificarGarajeActionPerformed
-        IfrmModificarGaraje ifrmModificarGaraje= new IfrmModificarGaraje();
+        IfrmModificarGaraje ifrmModificarGaraje= new IfrmModificarGaraje(empleadoID);
         centrarInternalFrame(ifrmModificarGaraje);
     }//GEN-LAST:event_mniModificarGarajeActionPerformed
 
     private void mniEliminarGraajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarGraajeActionPerformed
-        IfrmEliminarGaraje ifrmEliminarGaraje = new IfrmEliminarGaraje();
+        IfrmEliminarGaraje ifrmEliminarGaraje = new IfrmEliminarGaraje(empleadoID);
         centrarInternalFrame(ifrmEliminarGaraje);
     }//GEN-LAST:event_mniEliminarGraajeActionPerformed
 

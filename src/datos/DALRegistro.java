@@ -32,7 +32,11 @@ public class DALRegistro {
         try {
             cn = Conexion.realizarConexion();
             ps = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, registro.getEmpleadoID());
+            if(registro.getEmpleadoID()==0){
+                ps.setNull(1, java.sql.Types.INTEGER);
+            } else{
+                ps.setInt(1, registro.getEmpleadoID());
+            }
             ps.setString(2, registro.getRolEmpleado());
             ps.setTimestamp(3, Timestamp.valueOf(registro.getFecha()));
             ps.setString(4, registro.getTipoEvento());

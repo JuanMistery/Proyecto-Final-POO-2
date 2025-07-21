@@ -4,6 +4,7 @@
  */
 package presentacion;
 
+import javax.swing.JOptionPane;
 import logica.businessLogic.BLAgencia;
 import logica.businessLogic.BLRegistro;
 
@@ -136,6 +137,10 @@ public class IfrmAgregarAgencia extends javax.swing.JInternalFrame {
         String nombreAgencia = txtNombreAgencia.getText();
         String DireccionAgencia = txtDireccionAgencia.getText();
         int resultado= BLAgencia.insertarAgencia(nombreAgencia, DireccionAgencia);
+        if (empleadoID <= 0) {
+            JOptionPane.showMessageDialog(this, "ID de empleado inválido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         if(resultado==0){
             BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "INSERT" , "AGENCIA", "Se creo con exito una nueva Agencia");
         }

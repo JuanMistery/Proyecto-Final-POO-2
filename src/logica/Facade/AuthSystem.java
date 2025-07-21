@@ -10,5 +10,5 @@ package logica.Facade;
  */
 public interface AuthSystem {
     boolean ValidarCredenciales(String usuario, String contrasenia);
-    int obtenerID();
+    int obtenerIdPorUsuario(String usuario);
 }

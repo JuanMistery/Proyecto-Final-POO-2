@@ -7,6 +7,8 @@ package presentacion;
 import logica.Facade.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -129,7 +131,11 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         AuthFacade auth = new AuthFacade();
-        auth.autenticar(txtUsuario.getText(), txtContrasenia.getText(), this);
+        try {
+            auth.autenticar(txtUsuario.getText(), txtContrasenia.getText(), this);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**

@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import logica.businessLogic.BLGaraje;
+
 /**
  *
  * @author LOQ
@@ -15,6 +17,7 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
      */
     public IfrmAgregarAutomovil() {
         initComponents();
+        BLGaraje.cargarAgenciasEnComboBox(cmbGaraje);
     }
 
     /**
@@ -39,7 +42,7 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
         txtPlaca = new javax.swing.JTextField();
         txtModelo = new javax.swing.JTextField();
         lblImagenAutomovil = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbGaraje = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setTitle("Agregar Automovil");
@@ -50,11 +53,21 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
         btnNuevo.setMnemonic('N');
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
         btnAgregar.setMnemonic('A');
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         lblGarajeAsignado.setText("GARAJE ASIGNADO:");
 
@@ -66,15 +79,9 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
 
         lblModelo.setText("MODELO:");
 
-        txtModelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtModeloActionPerformed(evt);
-            }
-        });
-
         lblImagenAutomovil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Automovil-1.png"))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbGaraje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout panAgregarAutomovilLayout = new javax.swing.GroupLayout(panAgregarAutomovil);
         panAgregarAutomovil.setLayout(panAgregarAutomovilLayout);
@@ -92,7 +99,7 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
                     .addGroup(panAgregarAutomovilLayout.createSequentialGroup()
                         .addComponent(lblGarajeAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panAgregarAutomovilLayout.createSequentialGroup()
                         .addGroup(panAgregarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panAgregarAutomovilLayout.createSequentialGroup()
@@ -143,7 +150,7 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panAgregarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGarajeAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbGaraje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(panAgregarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,15 +172,31 @@ public class IfrmAgregarAutomovil extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtModeloActionPerformed
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        activar(true);
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        
+        activar(false);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void activar(boolean estado){
+        txtPlaca.setText("");
+        txtPlaca.setEnabled(estado);
+        txtColor.setText("");
+        txtColor.setEnabled(estado);
+        txtMarca.setText("");
+        txtMarca.setEnabled(estado);
+        txtModelo.setEnabled(estado);
+        txtModelo.setText("");
+        cmbGaraje.setEnabled(estado);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbGaraje;
     private javax.swing.JLabel lblColor;
     private javax.swing.JLabel lblGarajeAsignado;
     private javax.swing.JLabel lblImagenAutomovil;

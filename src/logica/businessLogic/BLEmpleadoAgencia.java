@@ -7,7 +7,10 @@ package logica.businessLogic;
 import datos.DALAdministrador;
 import datos.DALEmpleadoAgencia;
 import entidades.EmpleadoAgencia;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logica.Facade.AuthSystem;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -50,8 +53,15 @@ public class BLEmpleadoAgencia implements AuthSystem {
     }
 
     @Override
-    public int obtenerID() {
-        return this.empleadoId;
+    public int obtenerIdPorUsuario(String usuario) {
+        try {
+            return DALEmpleadoAgencia.ObtenerID(usuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(BLEmpleadoAgencia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BLEmpleadoAgencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
     // Métodos específicos de empleado

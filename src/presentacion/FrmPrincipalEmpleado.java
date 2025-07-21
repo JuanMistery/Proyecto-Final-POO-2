@@ -12,10 +12,12 @@ import javax.swing.JInternalFrame;
  */
 public class FrmPrincipalEmpleado extends javax.swing.JFrame {
 
+    int empleadoID;
     /**
      * Creates new form NewJFrame
      */
     public FrmPrincipalEmpleado(int ID) {
+        this.empleadoID=ID;
         this.setLocationRelativeTo(null);
         initComponents();
     }

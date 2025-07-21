@@ -7,6 +7,7 @@ package presentacion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.businessLogic.BLGaraje;
+import logica.businessLogic.BLRegistro;
 
 /**
  *
@@ -14,10 +15,12 @@ import logica.businessLogic.BLGaraje;
  */
 public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
 
+    int empleadoID;
     /**
      * Creates new form IfrmAgregarGaraje
      */
-    public IfrmAgregarGaraje() {
+    public IfrmAgregarGaraje(int ID) {
+        this.empleadoID=ID;
         initComponents();
     }
 
@@ -134,7 +137,10 @@ public class IfrmAgregarGaraje extends javax.swing.JInternalFrame {
         String nombreGaraje = txtNombre.getText();
         String direccionGaraje = txtDireccion.getText();
         try {
-            BLGaraje.registrarGaraje(nombreGaraje, direccionGaraje);
+            String resultado=BLGaraje.registrarGaraje(nombreGaraje, direccionGaraje);
+            if(resultado==null){
+                BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "INSERT" , "Garaje", "Se creo con exito un nuevo Garaje");
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(IfrmAgregarGaraje.class.getName()).log(Level.SEVERE, null, ex);
         }

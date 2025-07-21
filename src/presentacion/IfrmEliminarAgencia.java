@@ -64,6 +64,8 @@ public class IfrmEliminarAgencia extends javax.swing.JInternalFrame {
 
         lblNuevoNombre.setText("Nombre:");
 
+        txtNombre.setEnabled(false);
+
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEliminar.setMnemonic('G');
         btnEliminar.setText("Eliminar");
@@ -72,6 +74,8 @@ public class IfrmEliminarAgencia extends javax.swing.JInternalFrame {
                 btnEliminarActionPerformed(evt);
             }
         });
+
+        txtDireccion.setEnabled(false);
 
         lblDatos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDatos.setText("Datos:");

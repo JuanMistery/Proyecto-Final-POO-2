@@ -28,8 +28,7 @@ public class BLAutomovil {
     /**
      * Registra un nuevo automóvil con validaciones
      */
-    public static String registrarAutomovil(String placa, String modelo, String color, 
-                                          String marca, int estado, int garajeId) throws ClassNotFoundException {
+    public static String registrarAutomovil(String placa, String modelo, String color, String marca, int estado, int garajeId) throws ClassNotFoundException {
         // Validaciones
         String error = validarDatosAutomovil(placa, modelo, color, marca, estado);
         if (error != null) return error;

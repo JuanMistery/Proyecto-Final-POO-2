@@ -9,6 +9,8 @@ import datos.DALAdministrador;
 import datos.DALEmpleadoAgencia;
 import entidades.Administrador;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -52,11 +54,6 @@ public class BLAdministrador implements AuthSystem {
         return DALAdministrador.listarAdministradores();
     }
 
-    @Override
-    public int obtenerID() {
-        return this.adminId;
-    }
-
     // Métodos adicionales de negocio
     public static String registrarAdministrador(String nombres, String apellidos, String telefono,String direccion, String usuario, String contrasenia) {
         try {
@@ -90,8 +87,20 @@ public class BLAdministrador implements AuthSystem {
         }
     }   
     
-    public static int obtenerIdPorUsuario(String usuario) throws ClassNotFoundException{
-        return DALAdministrador.obtenerIdPorUsuario(usuario);
+    /**
+     *
+     * @param usuario
+     * @return
+     * @throws ClassNotFoundException
+     */
+    @Override
+    public int obtenerIdPorUsuario(String usuario){
+        try {
+            return DALAdministrador.obtenerIdPorUsuario(usuario);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BLAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
     // Validaciones privadas
@@ -154,5 +163,9 @@ public class BLAdministrador implements AuthSystem {
                 emp.getDireccion()
             });
         }
+    }
+
+    public int obtenerID() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -7,6 +7,7 @@ package presentacion;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.businessLogic.BLGaraje;
+import logica.businessLogic.BLRegistro;
 
 /**
  *
@@ -14,10 +15,12 @@ import logica.businessLogic.BLGaraje;
  */
 public class IfrmEliminarGaraje extends javax.swing.JInternalFrame {
 
+    int empleadoID;
     /**
      * Creates new form IfrmRegistrarReserva
      */
-    public IfrmEliminarGaraje() {
+    public IfrmEliminarGaraje(int ID) {
+        this.empleadoID=ID;
         initComponents();
         BLGaraje.cargarAgenciasEnComboBox(cmbGaraje);
     }
@@ -166,7 +169,10 @@ public class IfrmEliminarGaraje extends javax.swing.JInternalFrame {
         String item = cmbGaraje.getItemAt(index);
         if(index!=0){
             try {
-                BLGaraje.eliminarGaraje(BLGaraje.obtenerGaraje(item).getGarajeID());
+                String mensaje = BLGaraje.eliminarGaraje(BLGaraje.obtenerGaraje(item).getGarajeID());
+                if(mensaje==null){
+                                    BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "DELETE" , "GARAJE", "Se elimino con exito una Garaje");
+                }
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(IfrmEliminarGaraje.class.getName()).log(Level.SEVERE, null, ex);
             }
