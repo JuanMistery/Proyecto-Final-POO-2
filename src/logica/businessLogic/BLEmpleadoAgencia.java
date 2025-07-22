@@ -51,6 +51,10 @@ public class BLEmpleadoAgencia implements AuthSystem {
             return false;
         }
     }
+    
+    public static int obtenerAgenciaId(int empleadoId) throws SQLException, ClassNotFoundException{
+        return DALEmpleadoAgencia.obtenerAgenciaId(empleadoId);
+    }
 
     @Override
     public int obtenerIdPorUsuario(String usuario) {

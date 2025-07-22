@@ -24,7 +24,7 @@ public class AuthFacade {
         } 
         else if (empleadoSubsystem.ValidarCredenciales(usuario, contrasenia)) {
             new FrmPrincipalEmpleado(empleadoSubsystem.obtenerIdPorUsuario(usuario)).setVisible(true);
-            BLRegistro.registrarActividad(adminSubsystem.obtenerIdPorUsuario(usuario),"EMPLEADO", "LOGIN" , "AUTH", "Inicio Exitoso:" + BLEmpleadoAgencia.obtenerPorId(empleadoSubsystem.obtenerIdPorUsuario(usuario)).getUsuario());
+            BLRegistro.registrarActividad(empleadoSubsystem.obtenerIdPorUsuario(usuario),"EMPLEADO", "LOGIN" , "AUTH", "Inicio Exitoso:" + BLEmpleadoAgencia.obtenerPorId(empleadoSubsystem.obtenerIdPorUsuario(usuario)).getUsuario());
             parentFrame.dispose();
         } 
         else {

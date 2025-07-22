@@ -4,17 +4,68 @@
  */
 package presentacion;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import logica.Interpreter.DateInterpreterCliente;
+import logica.businessLogic.*;
+
 /**
  *
  * @author JuanMistery
  */
 public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
 
+    private final DateInterpreterCliente cliente = new DateInterpreterCliente();
+    private ArrayList<String> vehiculosEnReserva = new ArrayList<>();
+    private DefaultTableModel tableModel;
+    int empleadoID;
     /**
      * Creates new form IfrmRegistrarReserva
      */
-    public IfrmRegistrarReserva() {
+    public IfrmRegistrarReserva(int ID) throws ClassNotFoundException {
+        empleadoID=ID;
+        String[] columnas = {"Placa", "Precio Alquiler", "Litros Inicial"}; 
+        
+        this.tableModel = new DefaultTableModel(columnas, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return true; // Permitir edición de todas las celdas
+            }
+            
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                switch (columnIndex) {
+                    case 0: return String.class;    // Placa
+                    case 1: return Float.class;     // Precio Alquiler
+                    case 2: return Float.class;     // Litros Inicial
+                    default: return Object.class;
+                }
+            }
+        };
         initComponents();
+        jtbAutomovil.setModel(tableModel);
+        BLCliente.cargarClientesEnComboBox(cmbCliente);
+        BLAutomovil.cargarAutomovilsEnComboBox(cmbAutomoviles);
+        jtbAutomovil.setDefaultEditor(Float.class, new DefaultCellEditor(new JTextField()) {
+            @Override
+            public Object getCellEditorValue() {
+                String text = ((JTextField)getComponent()).getText().trim();
+                if (text.isEmpty()) {
+                    return null; // Permite valores vacíos
+                }
+                try {
+                    return Float.parseFloat(text);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un valor numérico válido", "Error", JOptionPane.ERROR_MESSAGE);
+                    return null;
+                }
+            }
+        });
     }
 
     /**
@@ -30,12 +81,17 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
         lblTitulo = new javax.swing.JLabel();
         lblFechaInicio = new javax.swing.JLabel();
         lblCliente = new javax.swing.JLabel();
-        lblPrecio = new javax.swing.JLabel();
         lblFechaFin = new javax.swing.JLabel();
-        txtPrecio = new javax.swing.JTextField();
         txtFechaFin = new javax.swing.JTextField();
         cmbCliente = new javax.swing.JComboBox<>();
-        txtFechaInicio1 = new javax.swing.JTextField();
+        txtFechaInicio = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
+        cmbAutomoviles = new javax.swing.JComboBox<>();
+        lblVehiculos = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtbAutomovil = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
+        btnReservar = new javax.swing.JButton();
 
         setTitle("Registro de Reserva");
 
@@ -50,9 +106,6 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
         lblCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCliente.setText("Cliente:");
 
-        lblPrecio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPrecio.setText("Precio");
-
         lblFechaFin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFechaFin.setText("Fecha Fin:");
 
@@ -60,31 +113,73 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
 
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        txtFechaInicio1.setText("DD/MM/AAAA");
+        txtFechaInicio.setText("DD/MM/AAAA");
+        txtFechaInicio.setToolTipText("");
+
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        cmbAutomoviles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblVehiculos.setText("Vehiculos:");
+
+        jtbAutomovil.setModel(tableModel);
+        jScrollPane1.setViewportView(jtbAutomovil);
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnReservar.setText("Reservar");
+        btnReservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panRegistroReservaLayout = new javax.swing.GroupLayout(panRegistroReserva);
         panRegistroReserva.setLayout(panRegistroReservaLayout);
         panRegistroReservaLayout.setHorizontalGroup(
             panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panRegistroReservaLayout.createSequentialGroup()
-                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panRegistroReservaLayout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(lblTitulo))
-                    .addGroup(panRegistroReservaLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(lblPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPrecio)
-                            .addComponent(txtFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                            .addComponent(cmbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFechaInicio1))))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panRegistroReservaLayout.createSequentialGroup()
+                            .addGap(27, 27, 27)
+                            .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblVehiculos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                                    .addComponent(txtFechaInicio)
+                                    .addComponent(cmbCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(panRegistroReservaLayout.createSequentialGroup()
+                                    .addComponent(cmbAutomoviles, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnAgregar)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(btnEliminar))))
+                        .addGroup(panRegistroReservaLayout.createSequentialGroup()
+                            .addGap(125, 125, 125)
+                            .addComponent(lblTitulo))))
+                .addContainerGap(11, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panRegistroReservaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156))
         );
         panRegistroReservaLayout.setVerticalGroup(
             panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,17 +192,23 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
                     .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPrecio)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaInicio)
-                    .addComponent(txtFechaInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaFin)
                     .addComponent(txtFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panRegistroReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVehiculos)
+                    .addComponent(cmbAutomoviles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnEliminar))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,17 +225,120 @@ public class IfrmRegistrarReserva extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
+        int IDcliente = 0;
+        try {
+            IDcliente = BLCliente.obtenerIDPorNombre((String) cmbCliente.getSelectedItem());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(IfrmRegistrarReserva.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        LocalDate inicio = cliente.interpret(txtFechaInicio.getText());
+        LocalDate fin = cliente.interpret(txtFechaFin.getText());
+        ArrayList<Float> preciosAlquiler = new ArrayList<>();
+        ArrayList<Float> litrosIniciales = new ArrayList<>();
+        float total = 0f;
+        for(int i=0; i<tableModel.getRowCount();i++){
+            try {
+                Float precio = (Float) tableModel.getValueAt(i, 1);
+                Float litros = (Float) tableModel.getValueAt(i, 2);
+
+                preciosAlquiler.add(precio);
+                litrosIniciales.add(litros);
+                total+= precio != null ? precio : 0f;
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Datos inválidos en la fila " + (i+1), "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+        int id=0;
+        try {
+            id = BLReserva.crearReserva(IDcliente,BLEmpleadoAgencia.obtenerAgenciaId(empleadoID), inicio, fin, total);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(IfrmRegistrarReserva.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String mensaje=BLReservaCoche.insertarCochesReserva(id, vehiculosEnReserva, preciosAlquiler, litrosIniciales);
+        if(mensaje==null){
+            BLRegistro.registrarActividad(empleadoID, "EMPLEADO", "INSERT" , "RESERVA", "Se creo con exito una nueva Reserva");
+            JOptionPane.showMessageDialog(this, "Se Registro con existo");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al registrar");
+        }
+        System.out.println((String) cmbCliente.getSelectedItem());
+        System.out.println(IDcliente);
+        try {
+            System.out.println(BLEmpleadoAgencia.obtenerAgenciaId(empleadoID));
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(IfrmRegistrarReserva.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(int i=0;i<vehiculosEnReserva.size();i++){
+            System.out.println(vehiculosEnReserva.get(i));
+            System.out.println(preciosAlquiler.get(i));
+            System.out.println(litrosIniciales.get(i));
+        }
+        
+    }//GEN-LAST:event_btnReservarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String placa = (String) cmbAutomoviles.getSelectedItem();
+    
+        if (placa != null && !placa.trim().isEmpty()) {
+            // Verificar si ya existe en la tabla
+            for (int i = 0; i < tableModel.getRowCount(); i++) {
+                if (placa.equals(tableModel.getValueAt(i, 0))) {
+                    JOptionPane.showMessageDialog(this, "¡Esta placa ya está en la tabla!");
+                    return;
+                }
+            }
+
+            // Agregar a la tabla (fila editable)
+            tableModel.addRow(new Object[]{placa});
+            vehiculosEnReserva.add(placa);
+
+            // Eliminar del ComboBox
+            cmbAutomoviles.removeItem(placa);
+
+            // Actualizar interfaz
+            jtbAutomovil.repaint();
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una placa válida.");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int filaSeleccionada = jtbAutomovil.getSelectedRow();
+    
+        if (filaSeleccionada >= 0) {
+            // Obtener placa de la fila seleccionada
+            String placa = (String) tableModel.getValueAt(filaSeleccionada, 0);
+            vehiculosEnReserva.remove(placa);
+
+            // Devolver al ComboBox
+            cmbAutomoviles.addItem(placa);
+
+            // Eliminar de la tabla
+            tableModel.removeRow(filaSeleccionada);
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar.");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnReservar;
+    private javax.swing.JComboBox<String> cmbAutomoviles;
     private javax.swing.JComboBox<String> cmbCliente;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jtbAutomovil;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblFechaFin;
     private javax.swing.JLabel lblFechaInicio;
-    private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblVehiculos;
     private javax.swing.JPanel panRegistroReserva;
     private javax.swing.JTextField txtFechaFin;
-    private javax.swing.JTextField txtFechaInicio1;
-    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtFechaInicio;
     // End of variables declaration//GEN-END:variables
 }

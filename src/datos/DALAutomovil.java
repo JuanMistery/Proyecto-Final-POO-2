@@ -30,7 +30,7 @@ public class DALAutomovil {
             ps.setString(2, auto.getModelo());
             ps.setString(3, auto.getColor());
             ps.setString(4, auto.getMarca());
-            ps.setInt(5, auto.getEstado());
+            ps.setString(5, auto.getEstado());
             ps.setInt(6, auto.getGarajeID());
             
             if (ps.executeUpdate() == 0) {
@@ -60,7 +60,7 @@ public class DALAutomovil {
                     rs.getString("modelo"),
                     rs.getString("color"),
                     rs.getString("marca"),
-                    rs.getInt("estado")
+                    rs.getString("estado")
                 );
             }
         } catch (SQLException ex) {
@@ -69,6 +69,27 @@ public class DALAutomovil {
             cerrarRecursos();
         }
         return null;
+    }
+    
+    public static boolean ObtenerDisponibilidad(String placa) throws ClassNotFoundException {
+        String sql = "SELECT * FROM vehiculo WHERE placa = ?";
+        
+        try {
+            cn = Conexion.realizarConexion();
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, placa);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                String estado = rs.getString("estado");
+                return estado.equalsIgnoreCase("disponible");
+            }
+            return false;
+        } catch (SQLException ex) {
+            mostrarError(ex);
+            return false;
+        } finally {
+            cerrarRecursos();
+        }
     }
 
     public static ArrayList<Automovil> listarPorGaraje(int garajeId) throws ClassNotFoundException {
@@ -88,7 +109,7 @@ public class DALAutomovil {
                     rs.getString("modelo"),
                     rs.getString("color"),
                     rs.getString("marca"),
-                    rs.getInt("estado")
+                    rs.getString("estado")
                 ));
             }
         } catch (SQLException ex) {
@@ -115,7 +136,7 @@ public class DALAutomovil {
                     rs.getString("modelo"),
                     rs.getString("color"),
                     rs.getString("marca"),
-                    rs.getInt("estado")
+                    rs.getString("estado")
                 ));
             }
         } catch (SQLException ex) {
@@ -135,7 +156,7 @@ public class DALAutomovil {
             ps.setString(1, auto.getModelo());
             ps.setString(2, auto.getColor());
             ps.setString(3, auto.getMarca());
-            ps.setInt(4, auto.getEstado());
+            ps.setString(4, auto.getEstado());
             ps.setInt(5, auto.getGarajeID());
             ps.setString(6, auto.getPlaca());
             

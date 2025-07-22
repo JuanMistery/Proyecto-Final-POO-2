@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 
 /**
@@ -64,13 +66,13 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         );
 
         mnuRegistrar.setText("Registrar");
-        mnuRegistrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuRegistrarActionPerformed(evt);
-            }
-        });
 
         mniReserva.setText("Reserva");
+        mniReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniReservaActionPerformed(evt);
+            }
+        });
         mnuRegistrar.add(mniReserva);
 
         mniPago.setText("Pago");
@@ -148,13 +150,19 @@ public class FrmPrincipalEmpleado extends javax.swing.JFrame {
         new FrmLogin().setVisible(true);
     }//GEN-LAST:event_mniCerrarActionPerformed
 
-    private void mnuRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRegistrarActionPerformed
-        centrarInternalFrame(new IfrmRegistrarReserva());
-    }//GEN-LAST:event_mnuRegistrarActionPerformed
-
     private void mnuListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuListaActionPerformed
+
+    private void mniReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniReservaActionPerformed
+        IfrmRegistrarReserva ifrmRegistrarReserva = null;
+        try {
+            ifrmRegistrarReserva = new IfrmRegistrarReserva(empleadoID);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FrmPrincipalEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        centrarInternalFrame(ifrmRegistrarReserva);
+    }//GEN-LAST:event_mniReservaActionPerformed
 
     /**
      * @param args the command line arguments

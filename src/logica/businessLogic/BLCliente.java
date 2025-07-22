@@ -8,7 +8,10 @@ import datos.DALCliente;
 import entidades.Cliente;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,8 +33,7 @@ public class BLCliente {
     private static final int ERROR_SPONSOR_A_SI_MISMO = 10;
     private static final int ERROR_CLIENTE_ES_SPONSOR = 11;
 
-    public static int insertarCliente(String dni, int sponsorID, String nombres, 
-                                    String apellidos, String telefono, String direccion) {
+    public static int insertarCliente(String dni, int sponsorID, String nombres, String apellidos, String telefono, String direccion) {
         // Validar DNI
         if (!validarDNI(dni)) {
             mostrarError("DNI no válido. Debe tener 8 caracteres numéricos.");
@@ -80,6 +82,42 @@ public class BLCliente {
             mostrarError("Error al registrar: " + resultado);
             return ERROR_BASE_DATOS;
         }
+    }
+    
+    public static void cargarSponsorsEnComboBox(JComboBox<String> comboBox) throws SQLException {
+        // Limpiar el comboBox primero
+        comboBox.removeAllItems();
+        
+        // Obtener todas las Clientes desde el DAL
+        ArrayList<Cliente> Clientes = DALCliente.listarClientes();
+        
+        // Agregar cada nombre de Cliente al comboBox
+        for (Cliente cliente : Clientes) {
+            if(DALCliente.verificarSponsorOcupado(cliente.getClienteID())){
+                comboBox.addItem(cliente.getNombres());
+            }
+        }
+        
+        // Opcional: Agregar un ítem vacío al inicio
+        comboBox.insertItemAt("-- Seleccione una Sponsor --", 0);
+        comboBox.setSelectedIndex(0);
+    }
+    
+    public static void cargarClientesEnComboBox(JComboBox<String> comboBox) {
+        // Limpiar el comboBox primero
+        comboBox.removeAllItems();
+        
+        // Obtener todas las Clientes desde el DAL
+        ArrayList<Cliente> Clientes = DALCliente.listarClientes();
+        
+        // Agregar cada nombre de Cliente al comboBox
+        for (Cliente cliente : Clientes) {
+            comboBox.addItem(cliente.getNombres()+ " "+ cliente.getApellidos());
+        }
+        
+        // Opcional: Agregar un ítem vacío al inicio
+        comboBox.insertItemAt("-- Seleccione una Cliente --", 0);
+        comboBox.setSelectedIndex(0);
     }
 
     public static int actualizarCliente(int clienteID, String dni, int sponsorID, 
@@ -223,8 +261,40 @@ public class BLCliente {
     public static Cliente obtenerCliente(int clienteID) {
         return DALCliente.obtenerCliente(clienteID);
     }
+    
+    public static int obtenerIDPorNombre(String cliente) throws ClassNotFoundException {
+        return DALCliente.obtenerIDPorNombre(cliente);
+    }
 
     public static ArrayList<Cliente> listarClientes() {
         return DALCliente.listarClientes();
+    }
+    
+    public static void cargarClientesEnTabla(JTable tabla) {
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0); // Limpiar datos existentes
+
+        // Definir columnas
+        String[] columnas = {"ID", "Nombre Completo", "Teléfono", "Dirección", "Sponsor"};
+        modelo.setColumnIdentifiers(columnas);
+        ArrayList<Cliente> listaCliente = listarClientes();
+
+        // Llenar la tabla con los datos de los clientes
+        for (Cliente cliente : listaCliente) {
+            String nombreSponsor;
+            if(cliente.getSponsorID()!=0){
+                nombreSponsor=DALCliente.obtenerCliente(cliente.getSponsorID()).getNombres();
+            } else {
+                nombreSponsor="";
+            }
+            modelo.addRow(new Object[]{
+                cliente.getClienteID(),
+                cliente.getNombres()+" "+cliente.getApellidos(),
+                cliente.getDNI(),
+                cliente.getTelefono(),
+                cliente.getDireccion(),
+                nombreSponsor
+            });
+        }
     }
 }

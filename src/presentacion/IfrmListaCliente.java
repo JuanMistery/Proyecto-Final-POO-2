@@ -4,6 +4,8 @@
  */
 package presentacion;
 
+import logica.businessLogic.BLCliente;
+
 /**
  *
  * @author LOQ
@@ -15,6 +17,7 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
      */
     public IfrmListaCliente() {
         initComponents();
+        BLCliente.cargarClientesEnTabla(tblListaClientes);
     }
 
     /**
@@ -34,19 +37,22 @@ public class IfrmListaCliente extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         lblBuscar = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Lista De Clientes");
 
         panListaCliente.setBackground(new java.awt.Color(255, 255, 255));
 
         tblListaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "DNI", "Sponsor"
+                "ID", "Nombre Completo", "DNI", "Telefono", "Direccion", "Sponsor"
             }
         ));
         jScrollPane1.setViewportView(tblListaClientes);

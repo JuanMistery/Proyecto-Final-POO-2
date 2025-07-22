@@ -46,6 +46,8 @@ public class IfrmEliminarGaraje extends javax.swing.JInternalFrame {
         lblCambio = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Eliminar Garaje");
 
         panModificarGaraje.setBackground(new java.awt.Color(255, 255, 255));
@@ -171,7 +173,7 @@ public class IfrmEliminarGaraje extends javax.swing.JInternalFrame {
             try {
                 String mensaje = BLGaraje.eliminarGaraje(BLGaraje.obtenerGaraje(item).getGarajeID());
                 if(mensaje==null){
-                                    BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "DELETE" , "GARAJE", "Se elimino con exito una Garaje");
+                    BLRegistro.registrarActividad(empleadoID,"ADMINISTRADOR", "DELETE" , "GARAJE", "Se elimino con exito una Garaje");
                 }
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(IfrmEliminarGaraje.class.getName()).log(Level.SEVERE, null, ex);

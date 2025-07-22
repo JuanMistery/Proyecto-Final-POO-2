@@ -4,10 +4,12 @@
  */
 package logica.Interpreter;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author JuanMistery
  */
-public interface ExpresionFecha {
-    boolean interpret(ContextoFecha contexto);
+public interface DateExpresion {
+    LocalDate interpret(DateContexto contexto) throws IllegalArgumentException;
 }

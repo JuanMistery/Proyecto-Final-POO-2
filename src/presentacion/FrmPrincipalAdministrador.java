@@ -4,6 +4,7 @@
  */
 package presentacion;
 
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
@@ -50,7 +51,6 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mniListaCliente = new javax.swing.JMenuItem();
         mniListaAutomóviles = new javax.swing.JMenuItem();
         mniListaGarajes = new javax.swing.JMenuItem();
-        mniListaReserva = new javax.swing.JMenuItem();
         mniListaEmpleado = new javax.swing.JMenuItem();
         mniListaAdministrador = new javax.swing.JMenuItem();
         mniListaRegistro = new javax.swing.JMenuItem();
@@ -120,6 +120,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuModificar.setText("Modificar");
 
         mniModificarCliente.setText("Cliente");
+        mniModificarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniModificarClienteActionPerformed(evt);
+            }
+        });
         mnuModificar.add(mniModificarCliente);
 
         mniModificarAutomovil.setText("Automóvil");
@@ -146,6 +151,11 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         mnuListas.setText("Listas");
 
         mniListaCliente.setText("Cliente");
+        mniListaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaClienteActionPerformed(evt);
+            }
+        });
         mnuListas.add(mniListaCliente);
 
         mniListaAutomóviles.setText("Automóviles");
@@ -158,9 +168,6 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
             }
         });
         mnuListas.add(mniListaGarajes);
-
-        mniListaReserva.setText("Reservas");
-        mnuListas.add(mniListaReserva);
 
         mniListaEmpleado.setText("Empleados");
         mniListaEmpleado.addActionListener(new java.awt.event.ActionListener() {
@@ -281,7 +288,13 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_mniEliminarClienteActionPerformed
 
     private void mniAgregarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarClientesActionPerformed
-        centrarInternalFrame(new IfrmAgregarCliente());
+        IfrmAgregarCliente ifrmAgregarCliente = null;
+        try {
+            ifrmAgregarCliente = new IfrmAgregarCliente(empleadoID);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmPrincipalAdministrador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        centrarInternalFrame(ifrmAgregarCliente);
     }//GEN-LAST:event_mniAgregarClientesActionPerformed
 
     private void mniListaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaRegistroActionPerformed
@@ -339,6 +352,16 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
         centrarInternalFrame(ifrmEliminarGaraje);
     }//GEN-LAST:event_mniEliminarGraajeActionPerformed
 
+    private void mniModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniModificarClienteActionPerformed
+        IfrmModificarCliente ifrmModificarCliente = new IfrmModificarCliente();
+        centrarInternalFrame(ifrmModificarCliente);
+    }//GEN-LAST:event_mniModificarClienteActionPerformed
+
+    private void mniListaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaClienteActionPerformed
+        IfrmListaCliente ifrmListaCliente = new IfrmListaCliente();
+        centrarInternalFrame(ifrmListaCliente);
+    }//GEN-LAST:event_mniListaClienteActionPerformed
+
     private void centrarInternalFrame(JInternalFrame interna) {
         int x = dspAdministrador.getWidth()/2 - interna.getWidth()/2;
         int y = dspAdministrador.getHeight()/2 - interna.getHeight()/2;
@@ -376,7 +399,6 @@ public class FrmPrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniListaEmpleado;
     private javax.swing.JMenuItem mniListaGarajes;
     private javax.swing.JMenuItem mniListaRegistro;
-    private javax.swing.JMenuItem mniListaReserva;
     private javax.swing.JMenuItem mniModificarAgencia;
     private javax.swing.JMenuItem mniModificarAutomovil;
     private javax.swing.JMenuItem mniModificarCliente;

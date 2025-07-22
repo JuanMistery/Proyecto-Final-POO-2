@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package logica;
+package logica.businessLogic;
 
 import javax.swing.*;
 import entidades.Automovil;
@@ -28,7 +28,7 @@ public class BLAutomovil {
     /**
      * Registra un nuevo automóvil con validaciones
      */
-    public static String registrarAutomovil(String placa, String modelo, String color, String marca, int estado, int garajeId) throws ClassNotFoundException {
+    public static String registrarAutomovil(String placa, String modelo, String color, String marca, String estado, int garajeId) throws ClassNotFoundException {
         // Validaciones
         String error = validarDatosAutomovil(placa, modelo, color, marca, estado);
         if (error != null) return error;
@@ -46,7 +46,7 @@ public class BLAutomovil {
      * Actualiza un automóvil existente
      */
     public static String actualizarAutomovil(String placaOriginal, String nuevaPlaca, String modelo, 
-                                            String color, String marca, int estado, int garajeId) throws ClassNotFoundException {
+                                            String color, String marca, String estado, int garajeId) throws ClassNotFoundException {
         // Validaciones
         String error = validarDatosAutomovil(nuevaPlaca, modelo, color, marca, estado);
         if (error != null) return error;
@@ -64,6 +64,25 @@ public class BLAutomovil {
 
         Automovil autoActualizado = new Automovil(garajeId, nuevaPlaca, modelo, color, marca, estado);
         return DALAutomovil.actualizarAutomovil(autoActualizado);
+    }
+    
+    public static void cargarAutomovilsEnComboBox(JComboBox<String> comboBox) throws ClassNotFoundException {
+        // Limpiar el comboBox primero
+        comboBox.removeAllItems();
+        
+        // Obtener todas las Automovils desde el DAL
+        ArrayList<Automovil> Automovils = DALAutomovil.listarTodos();
+        
+        // Agregar cada nombre de Automovil al comboBox
+        for (Automovil automovil : Automovils) {
+            if(DALAutomovil.ObtenerDisponibilidad(automovil.getPlaca())){
+                comboBox.addItem(automovil.getPlaca());
+            }
+        }
+        
+        // Opcional: Agregar un ítem vacío al inicio
+        comboBox.insertItemAt("-- Seleccione una Automovil --", 0);
+        comboBox.setSelectedIndex(0);
     }
 
     /**
@@ -106,7 +125,7 @@ public class BLAutomovil {
         ArrayList<Automovil> disponibles = new ArrayList<>();
         
         for (Automovil auto : todos) {
-            if (auto.getEstado() == ESTADO_DISPONIBLE) {
+            if (auto.getEstado().equalsIgnoreCase("disponible")) {
                 disponibles.add(auto);
             }
         }
@@ -139,7 +158,7 @@ public class BLAutomovil {
                 auto.getModelo(),
                 auto.getMarca(),
                 auto.getColor(),
-                convertirEstadoTexto(auto.getEstado()),
+                auto.getEstado(),
                 auto.getGarajeID()
             };
             modelo.addRow(fila);
@@ -150,7 +169,7 @@ public class BLAutomovil {
 
     // Métodos auxiliares privados
     private static String validarDatosAutomovil(String placa, String modelo, String color, 
-                                              String marca, int estado) {
+                                              String marca, String estado) {
         if (placa == null || placa.trim().isEmpty() || placa.length() > MAX_LONGITUD_PLACA) {
             return "Placa no válida (máx " + MAX_LONGITUD_PLACA + " caracteres)";
         }
@@ -165,10 +184,6 @@ public class BLAutomovil {
         
         if (color == null || color.trim().isEmpty() || color.length() > MAX_LONGITUD_COLOR) {
             return "Color no válido (máx " + MAX_LONGITUD_COLOR + " caracteres)";
-        }
-        
-        if (estado < 1 || estado > 3) {
-            return "Estado no válido (1-Disponible, 2-Ocupado, 3-Mantenimiento)";
         }
         
         return null;

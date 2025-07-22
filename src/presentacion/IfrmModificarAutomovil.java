@@ -41,6 +41,8 @@ public class IfrmModificarAutomovil extends javax.swing.JInternalFrame {
         lblCambios = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Modificar Automovil");
 
         panModificarAutomovil.setBackground(new java.awt.Color(255, 255, 255));
@@ -135,8 +137,8 @@ public class IfrmModificarAutomovil extends javax.swing.JInternalFrame {
                     .addComponent(lblNuevaPlaca)
                     .addComponent(txtNuevaPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panModificarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNuevoColor)
+                .addGroup(panModificarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNuevoColor, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNuevoColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panModificarAutomovilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

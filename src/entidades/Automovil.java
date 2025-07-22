@@ -14,9 +14,9 @@ public class Automovil {
     private String modelo;
     private String color;
     private String marca;
-    private int estado;
+    private String estado;
 
-    public Automovil(int garajeID, String placa, String modelo, String color, String marca, int estado) {
+    public Automovil(int garajeID, String placa, String modelo, String color, String marca, String estado) {
         this.garajeID = garajeID;
         this.placa = placa;
         this.modelo = modelo;
@@ -68,11 +68,11 @@ public class Automovil {
         this.marca = marca;
     }
 
-    public int getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 

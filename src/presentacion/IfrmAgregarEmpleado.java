@@ -54,6 +54,9 @@ public class IfrmAgregarEmpleado extends javax.swing.JInternalFrame {
         lblAgencia = new javax.swing.JLabel();
         cmbAgencia = new javax.swing.JComboBox<>();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Agregar Empleado");
 
         panAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));

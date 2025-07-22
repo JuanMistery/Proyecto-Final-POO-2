@@ -44,6 +44,8 @@ public class IfrmModificarAgencia extends javax.swing.JInternalFrame {
         lblCambio = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Modificar Agencia");
 
         panModificarCliente.setBackground(new java.awt.Color(255, 255, 255));

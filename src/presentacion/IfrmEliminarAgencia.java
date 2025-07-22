@@ -44,6 +44,8 @@ public class IfrmEliminarAgencia extends javax.swing.JInternalFrame {
         lblDatos = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Eliminar Agencia");
 
         panModificarCliente.setBackground(new java.awt.Color(255, 255, 255));

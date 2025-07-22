@@ -4,17 +4,24 @@
  */
 package presentacion;
 
+import java.sql.SQLException;
+import logica.businessLogic.BLCliente;
+import logica.businessLogic.BLRegistro;
+
 /**
  *
  * @author LOQ
  */
 public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
 
+    int empleadoID;
     /**
      * Creates new form IfrmAgregarCliente
      */
-    public IfrmAgregarCliente() {
+    public IfrmAgregarCliente(int ID) throws SQLException {
+        empleadoID=ID;
         initComponents();
+        BLCliente.cargarSponsorsEnComboBox(cmbSponsor);
     }
 
     /**
@@ -26,6 +33,7 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgSponsor = new javax.swing.ButtonGroup();
         panAgregarCliente = new javax.swing.JPanel();
         lblNombreCliente = new javax.swing.JLabel();
         lblApellidoCliente = new javax.swing.JLabel();
@@ -34,7 +42,6 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
         txtNombreCliente = new javax.swing.JTextField();
         txtApellidoCliente = new javax.swing.JTextField();
         txtDniCliente = new javax.swing.JTextField();
-        txtSponsorCliente = new javax.swing.JTextField();
         lblImagenCliente = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
@@ -42,7 +49,13 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
         lblDireccionCliente = new javax.swing.JLabel();
         txtTelefonoCliente = new javax.swing.JTextField();
         txtDireccionCliente = new javax.swing.JTextField();
+        rbtActivar = new javax.swing.JRadioButton();
+        rbtDesactivar = new javax.swing.JRadioButton();
+        cmbSponsor = new javax.swing.JComboBox<>();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Agregar Cliente");
 
         panAgregarCliente.setBackground(new java.awt.Color(255, 255, 255));
@@ -60,8 +73,6 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
         txtApellidoCliente.setEnabled(false);
 
         txtDniCliente.setEnabled(false);
-
-        txtSponsorCliente.setEnabled(false);
 
         lblImagenCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cliente-1.png"))); // NOI18N
 
@@ -93,6 +104,25 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
 
         txtDireccionCliente.setEnabled(false);
 
+        btgSponsor.add(rbtActivar);
+        rbtActivar.setText("Activar");
+        rbtActivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtActivarActionPerformed(evt);
+            }
+        });
+
+        btgSponsor.add(rbtDesactivar);
+        rbtDesactivar.setText("Desactivar");
+        rbtDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtDesactivarActionPerformed(evt);
+            }
+        });
+
+        cmbSponsor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSponsor.setEnabled(false);
+
         javax.swing.GroupLayout panAgregarClienteLayout = new javax.swing.GroupLayout(panAgregarCliente);
         panAgregarCliente.setLayout(panAgregarClienteLayout);
         panAgregarClienteLayout.setHorizontalGroup(
@@ -123,9 +153,13 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
                             .addGroup(panAgregarClienteLayout.createSequentialGroup()
                                 .addComponent(lblDireccionCliente)
                                 .addGap(21, 21, 21)))
-                        .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtDireccionCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                            .addComponent(txtSponsorCliente))))
+                            .addComponent(cmbSponsor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panAgregarClienteLayout.createSequentialGroup()
+                        .addComponent(rbtActivar)
+                        .addGap(27, 27, 27)
+                        .addComponent(rbtDesactivar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panAgregarClienteLayout.createSequentialGroup()
@@ -160,15 +194,19 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
                 .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDireccionCliente)
                     .addComponent(txtDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSponsorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSponsorCliente))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtActivar)
+                    .addComponent(rbtDesactivar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(panAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSponsorCliente)
+                    .addComponent(cmbSponsor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
             .addGroup(panAgregarClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblImagenCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,27 +221,59 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(panAgregarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        String nombre = txtNombreCliente.getText();
+        String apellido = txtApellidoCliente.getText();
+        String telefono = txtTelefonoCliente.getText();
+        String dni = txtDniCliente.getText();
+        String direccion = txtDireccionCliente.getText();
+        int resultado = BLCliente.insertarCliente(dni, SOMEBITS, nombre, apellido, telefono, direccion);
+        if(resultado == 0){
+            BLRegistro.registrarActividad(empleadoID, "ADMINISTRADOR", "INSERT" , "CLIENTE", "Se creo con exito un nuevo Cliente");
+        }
+        activar(false);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        txtNombreCliente.setEnabled(true);
-        txtApellidoCliente.setEnabled(true);
+        activar(true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
+    private void rbtActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtActivarActionPerformed
+        cmbSponsor.setEnabled(true);
+    }//GEN-LAST:event_rbtActivarActionPerformed
+
+    private void rbtDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtDesactivarActionPerformed
+        cmbSponsor.setEnabled(false);
+        cmbSponsor.setSelectedIndex(0);
+    }//GEN-LAST:event_rbtDesactivarActionPerformed
+
+    private void activar(boolean estado){
+        txtNombreCliente.setEnabled(estado);
+        txtApellidoCliente.setEnabled(estado);
+        txtTelefonoCliente.setEnabled(estado);
+        txtDniCliente.setEnabled(estado);
+        txtDireccionCliente.setEnabled(estado);
+        txtNombreCliente.setText("");
+        txtApellidoCliente.setText("");
+        txtTelefonoCliente.setText("");
+        txtDniCliente.setText("");
+        txtDireccionCliente.setText("");
+        if(estado==false){
+            cmbSponsor.setEnabled(estado);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgSponsor;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JComboBox<String> cmbSponsor;
     private javax.swing.JLabel lblApellidoCliente;
     private javax.swing.JLabel lblDireccionCliente;
     private javax.swing.JLabel lblDniCliente;
@@ -212,11 +282,12 @@ public class IfrmAgregarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblSponsorCliente;
     private javax.swing.JLabel lblTelefonoCliente;
     private javax.swing.JPanel panAgregarCliente;
+    private javax.swing.JRadioButton rbtActivar;
+    private javax.swing.JRadioButton rbtDesactivar;
     private javax.swing.JTextField txtApellidoCliente;
     private javax.swing.JTextField txtDireccionCliente;
     private javax.swing.JTextField txtDniCliente;
     private javax.swing.JTextField txtNombreCliente;
-    private javax.swing.JTextField txtSponsorCliente;
     private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables
 }

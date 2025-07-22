@@ -7,6 +7,8 @@ package datos;
 import entidades.Cliente;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +24,7 @@ public class DALCliente {
     
     public static String insertarCliente(Cliente cliente) {
         String mensaje = null;
-        String sql = "INSERT INTO Cliente (dni, nombres, apellidos, telefono, direccion, sponsor_id) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO cliente (dni, nombres, apellidos, telefono, direccion, sponsor_id) VALUES (?, ?, ?, ?, ?, ?)";
         
         try {
             cn = Conexion.realizarConexion();
@@ -68,14 +70,22 @@ public class DALCliente {
         return mensaje;
     }
     
-    public static boolean verificarSponsorOcupado(int sponsorID) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM Cliente WHERE sponsor_id = ?";
-        ps = cn.prepareStatement(sql);
-        ps.setInt(1, sponsorID);
-        rs = ps.executeQuery();
-        
-        if (rs.next()) {
-            return rs.getInt(1) > 0;
+    public static boolean verificarSponsorOcupado(int sponsorID) {
+        String sql = "SELECT COUNT(*) FROM cliente WHERE sponsor_id = ?";
+        try {
+            cn = Conexion.realizarConexion();
+            ps = cn.prepareStatement(sql);
+            ps.setInt(1, sponsorID);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+            return false;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DALCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DALCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -214,4 +224,38 @@ public class DALCliente {
         }
         return mensaje;
     }
+
+     public static int obtenerIDPorNombre(String clienteNombre) throws ClassNotFoundException {
+        CallableStatement cs = null;
+         try{
+            cn = Conexion.realizarConexion();
+            String sql = "{call ObtenerClienteIDPorNombre(?, ?)}";
+            cs = cn.prepareCall(sql);
+
+            // Parámetro de entrada (nombre completo)
+            cs.setString(1, clienteNombre.trim());
+
+            // Registrar parámetro de salida
+            cs.registerOutParameter(2, Types.INTEGER);
+
+            // Ejecutar procedimiento
+            cs.execute();
+
+            // Obtener resultado
+            return cs.getInt(2);
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, 
+                "Error al buscar cliente: " + ex.getMessage(), 
+                "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+            return -1; // Valor de error
+        } finally {
+            try {
+                if (cs != null) cs.close();
+                if (cn != null) cn.close();
+            } catch (SQLException ex) {
+                System.err.println("Error al cerrar recursos: " + ex.getMessage());
+            }
+        }
+     }
 }

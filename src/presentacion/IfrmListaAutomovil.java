@@ -34,6 +34,9 @@ public class IfrmListaAutomovil extends javax.swing.JInternalFrame {
         txtBuscar = new javax.swing.JTextField();
         lblBuscar = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Lista De Automóviles");
 
         panListaAutomovil.setBackground(new java.awt.Color(255, 255, 255));

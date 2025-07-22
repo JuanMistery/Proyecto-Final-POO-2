@@ -52,6 +52,31 @@ public class DALEmpleadoAgencia {
             cerrarRecursos();
         }
     }
+    
+    public static int obtenerAgenciaId(int empleadoId) throws SQLException, ClassNotFoundException {
+        String sql = "{? = call ObtenerAgenciaEmpleado(?)}";
+        
+        try{
+            Connection con = Conexion.realizarConexion();
+            CallableStatement stmt = con.prepareCall(sql);
+            
+            // Registrar parámetro de salida
+            stmt.registerOutParameter(1, Types.INTEGER);
+            
+            // Establecer parámetro de entrada
+            stmt.setInt(2, empleadoId);
+            
+            // Ejecutar la función
+            stmt.execute();
+            
+            // Obtener el resultado
+            return stmt.getInt(1);
+            
+        } catch (SQLException e) {
+            System.err.println("Error al obtener agencia_id: " + e.getMessage());
+            throw e;
+        }
+    }
 
     // Validar credenciales
     public static EmpleadoAgencia validarCredenciales(String usuario, String contrasenia) throws ClassNotFoundException {
